@@ -1,13 +1,256 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Damini Shrawan - Software Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-dark': '#0a0a0a',
+            'accent': '#00e5ff',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; overflow-x: hidden; }
+    ::selection { background-color: #00e5ff; color: #0a0a0a; }
+    .spin-slow { animation: spin 40s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="antialiased selection:bg-accent selection:text-bg-dark">
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center relative px-6 py-20 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12 z-10">
+      <div class="flex-1 text-center lg:text-left fade-in">
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-white">Damini Shrawan</h1>
+        <h2 class="text-2xl md:text-3xl font-medium text-accent mb-6">Architecting Scalable Systems | Building for AI</h2>
+        <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+          Full-Stack Developer based in Mumbai, currently leading end-to-end delivery of luxury hospitality ecosystems and internal automation at Isprava.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
+          <a href="#projects" class="group relative px-8 py-4 bg-accent text-bg-dark font-semibold rounded-full overflow-hidden transition-transform hover:scale-105">
+            <span class="relative z-10 flex items-center gap-2">View Projects</span>
+          </a>
+          <a href="#contact" class="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-white/10 transition-all hover:border-accent/50 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center items-center fade-in">
+        <div class="relative w-64 h-64 md:w-96 md:h-96 opacity-80 spin-slow">
+          <svg viewBox="0 0 100 100" class="w-full h-full stroke-accent fill-transparent stroke-[0.5]">
+            <circle cx="50" cy="50" r="48" class="stroke-accent/30" />
+            <ellipse cx="50" cy="50" rx="48" ry="15" class="stroke-accent/50" />
+            <ellipse cx="50" cy="50" rx="15" ry="48" class="stroke-accent/50" />
+            <path d="M 15 15 L 85 85 M 15 85 L 85 15" class="stroke-accent/30" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Education Section -->
+  <section id="experience" class="py-24 px-6 relative">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-16 flex items-center gap-4 fade-in">
+        <span class="w-8 h-[2px] bg-accent"></span> My Journey
+      </h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <!-- Experience -->
+        <div>
+          <h3 class="text-2xl font-semibold mb-10 text-white">Experience</h3>
+          <div class="relative border-l border-white/10 ml-4 md:ml-0">
+            <!-- Job 1 -->
+            <div class="mb-12 relative pl-8 group fade-in">
+              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)]"></div>
+              <div class="text-accent font-mono text-sm mb-1">Jul 2024 — Present</div>
+              <div class="text-xl font-semibold text-white">Software Developer</div>
+              <div class="text-gray-400 font-medium">Isprava</div>
+              <div class="bg-white/5 border border-white/5 rounded-2xl p-6 mt-4">
+                <p class="text-gray-200 text-sm mb-4">Leading end-to-end full-stack delivery of luxury hospitality ecosystems.</p>
+                <ul class="list-disc pl-4 space-y-2 text-gray-400 text-sm marker:text-accent/70">
+                  <li>Engineered the Lohono property platform with multi-config checkout, dynamic pricing.</li>
+                  <li>Spearheaded the Trip Planner guest app, managing complex state machines.</li>
+                  <li>Architected internal operations (LMS/OI) including Food Ordering, KOT flows.</li>
+                </ul>
+              </div>
+            </div>
+            <!-- Job 2 -->
+            <div class="mb-12 relative pl-8 group fade-in">
+              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)]"></div>
+              <div class="text-accent font-mono text-sm mb-1">Jan 2024 — Jul 2024</div>
+              <div class="text-xl font-semibold text-white">Frontend Developer Intern</div>
+              <div class="text-gray-400 font-medium">Isprava</div>
+              <div class="bg-white/5 border border-white/5 rounded-2xl p-6 mt-4">
+                <p class="text-gray-200 text-sm mb-4">Drove end-to-end delivery for luxury hospitality platforms.</p>
+                <ul class="list-disc pl-4 space-y-2 text-gray-400 text-sm marker:text-accent/70">
+                  <li>Built core consumer features for the Lohono website.</li>
+                  <li>Developed the Trip Planner guest app for meal planning.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Education -->
+        <div>
+          <h3 class="text-2xl font-semibold mb-10 text-white">Education</h3>
+          <div class="relative border-l border-white/10 ml-4 md:ml-0">
+            <!-- Edu 1 -->
+            <div class="mb-12 relative pl-8 group fade-in">
+              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)]"></div>
+              <div class="text-accent font-mono text-sm mb-1">Mar 2023 — Aug 2023</div>
+              <div class="text-xl font-semibold text-white">PG-DMC, Mobile Computing</div>
+              <div class="text-gray-400 font-medium">C-DAC Pune (GPA: 6.5)</div>
+              <div class="bg-white/5 border border-white/5 rounded-2xl p-5 mt-4">
+                <p class="text-gray-300 text-sm">Completed a specialized program focused on designing and developing mobile applications.</p>
+              </div>
+            </div>
+            <!-- Edu 2 -->
+            <div class="mb-12 relative pl-8 group fade-in">
+              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)]"></div>
+              <div class="text-accent font-mono text-sm mb-1">Jun 2017 — Jun 2021</div>
+              <div class="text-xl font-semibold text-white">B.Tech, Electrical Engineering</div>
+              <div class="text-gray-400 font-medium">CSVTU Bhilai (GPA: 7.4)</div>
+              <div class="bg-white/5 border border-white/5 rounded-2xl p-5 mt-4">
+                <p class="text-gray-300 text-sm">Completed undergraduate studies with a strong foundation in core electrical engineering subjects.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-24 px-6 relative bg-white/[0.02]">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-20 flex items-center gap-4 fade-in">
+        <span class="w-8 h-[2px] bg-accent"></span> Key Projects
+      </h2>
+      <div class="flex flex-col gap-24">
+        <!-- Project 1 -->
+        <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center group fade-in">
+          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] lg:aspect-video">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80" alt="Lohono Stays" class="w-full h-full object-cover">
+          </div>
+          <div class="w-full lg:w-1/2 flex flex-col">
+            <div class="text-accent text-sm font-mono mb-3">Consumer Platform</div>
+            <h3 class="text-3xl font-bold text-white mb-6">Lohono Stays</h3>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6 relative overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent/50"></div>
+              <p class="text-gray-300 mb-4 text-base">A full-stack web application powering the discovery and booking of luxury villas and holiday homes across India and Asia.</p>
+              <ul class="list-disc pl-5 space-y-1.5 text-gray-400 text-sm marker:text-accent/70">
+                <li>Architected a server-side rendered (SSR) React application with Razzle and Express.</li>
+                <li>Implemented end-to-end booking flows including property search, filters, checkout.</li>
+              </ul>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">React 18</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">TypeScript</span>
+            </div>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="flex flex-col lg:flex-row-reverse gap-10 lg:gap-16 items-center group fade-in">
+          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] lg:aspect-video">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80" alt="Isprava LMS" class="w-full h-full object-cover">
+          </div>
+          <div class="w-full lg:w-1/2 flex flex-col">
+            <div class="text-accent text-sm font-mono mb-3">Operations Interface</div>
+            <h3 class="text-3xl font-bold text-white mb-6">Isprava LMS / OI</h3>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6 relative overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent/50"></div>
+              <p class="text-gray-300 mb-4 text-base">An internal operations platform that centralizes luxury vacation rental and real-estate workflows.</p>
+              <ul class="list-disc pl-5 space-y-1.5 text-gray-400 text-sm marker:text-accent/70">
+                <li>Architected a modular React SPA with context-based service providers for 25+ domains.</li>
+                <li>Implemented role-based access control (ACL) across 40+ page templates.</li>
+              </ul>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Material-UI</span>
+              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">React Router v6</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Lab Section -->
+  <section id="ai-lab" class="py-24 px-6 relative">
+    <div class="max-w-5xl mx-auto text-center fade-in">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">AI Engineering Lab</h2>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-16">Currently upskilling in LLM integration, agentic workflows, and prompt engineering.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+        <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+          <h3 class="text-2xl font-semibold text-white mb-3">Agentic Trip Assistant</h3>
+          <div class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-mono rounded-full mb-4">Upcoming</div>
+          <p class="text-gray-400">An autonomous agent designed to plan, book, and manage luxury itineraries.</p>
+        </div>
+        <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+          <h3 class="text-2xl font-semibold text-white mb-3">Internal OI Copilot</h3>
+          <div class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-mono rounded-full mb-4">Upcoming</div>
+          <p class="text-gray-400">A context-aware LLM assistant integrated into the Operations Interface.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack Section -->
+  <section class="py-24 px-6 relative bg-white/[0.02]">
+    <div class="max-w-5xl mx-auto fade-in">
+      <h2 class="text-3xl md:text-4xl font-bold mb-16 flex items-center gap-4">
+        <span class="w-8 h-[2px] bg-accent"></span> The Stack & Certifications
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/5 text-center"><div class="text-sm font-semibold text-gray-200">React 18</div></div>
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/5 text-center"><div class="text-sm font-semibold text-gray-200">TypeScript</div></div>
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/5 text-center"><div class="text-sm font-semibold text-gray-200">Next.js 14</div></div>
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/5 text-center"><div class="text-sm font-semibold text-gray-200">Node.js</div></div>
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/5 text-center"><div class="text-sm font-semibold text-gray-200">Express.js</div></div>
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/5 text-center"><div class="text-sm font-semibold text-gray-200">Spring Boot</div></div>
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/5 text-center"><div class="text-sm font-semibold text-gray-200">MySQL</div></div>
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/5 text-center"><div class="text-sm font-semibold text-gray-200">AWS S3</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="py-20 px-6 border-t border-white/10 relative">
+    <div class="max-w-5xl mx-auto text-center fade-in">
+      <h2 class="text-3xl font-bold mb-6">Let's Connect</h2>
+      <p class="text-gray-400 mb-8">damini1998shrawan29@gmail.com | Mumbai, Maharashtra, 400031</p>
+      <div class="text-gray-500 text-sm">Damini Shrawan © 2026. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+  </script>
+</body>
 </html>
 

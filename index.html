@@ -1,159 +1,386 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Damini Shrawan - Software Developer</title>
+  <title>Damini Shrawan | Full-Stack Web Engineer & AI Candidate</title>
+  <meta name="description" content="Portfolio of Damini Shrawan, Full-Stack Engineer with 2+ years of production experience building scalable web products, now training in AI/ML at IIT Jodhpur." />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Damini Shrawan | Full-Stack Engineer & AI Candidate" />
+  <meta property="og:description" content="2+ years of production experience building scalable products at Isprava and Lohono. Training in AI/ML through M.Tech at IIT Jodhpur." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ais-pre-bccx6uw4zzi2wemkkoyhwb-533067739097.asia-southeast1.run.app" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=630&q=80" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Damini Shrawan | Full-Stack Engineer" />
+  <meta name="twitter:description" content="Full-Stack Web Engineer moving into AI Engineering. M.Tech candidate at IIT Jodhpur." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=630&q=80" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            'bg-dark': '#0a0a0a',
-            'accent': '#00e5ff',
+            'bg-dark': '#070709',
+            'bg-light': '#f8f9fa',
+            'accent-blue': '#00d2ff',
+            'accent-purple': '#9D4EDD',
+            'accent-teal': '#00f5d4',
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
-            mono: ['monospace'],
+            mono: ['Fira Code', 'monospace'],
+            display: ['Space Grotesk', 'sans-serif'],
           }
         }
       }
     }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; overflow-x: hidden; }
-    ::selection { background-color: #00e5ff; color: #0a0a0a; }
-    .spin-slow { animation: spin 40s linear infinite; }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    ::selection { background-color: #00d2ff; color: #070709; }
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
-<body class="antialiased selection:bg-accent selection:text-bg-dark">
+<body class="bg-bg-light dark:bg-bg-dark text-gray-800 dark:text-gray-100 transition-colors duration-500 selection:bg-accent-blue selection:text-bg-dark">
+
+  <!-- Background Grid -->
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="absolute inset-0 bg-bg-light dark:bg-bg-dark transition-colors duration-500"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:24px_24px]"></div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-bg-light/80 dark:bg-bg-dark/80 border-b border-gray-200 dark:border-white/5 transition-colors">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="font-display font-bold text-xl tracking-tight flex items-center gap-2 text-gray-900 dark:text-white">
+        DS <span class="text-xs font-mono px-2 py-0.5 bg-accent-blue/10 text-accent-blue border border-accent-blue/20 rounded">// AI-READY</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#about" class="text-gray-600 dark:text-gray-400 hover:text-accent-blue transition-colors">Journey</a>
+        <a href="#projects" class="text-gray-600 dark:text-gray-400 hover:text-accent-blue transition-colors">Projects</a>
+        <a href="#ai-lab" class="text-gray-600 dark:text-gray-400 hover:text-accent-blue transition-colors">AI Lab</a>
+        <a href="#stack" class="text-gray-600 dark:text-gray-400 hover:text-accent-blue transition-colors">Skills</a>
+        <a href="#contact" class="text-gray-600 dark:text-gray-400 hover:text-accent-blue transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <!-- Light Mode Toggle -->
+        <button id="theme-toggle" class="p-2 border border-gray-200 dark:border-white/5 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-accent-blue transition-all" aria-label="Toggle Theme">
+          <svg id="theme-icon-light" class="hidden dark:block w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+          <svg id="theme-icon-dark" class="block dark:hidden w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <!-- Download CV Header Button -->
+        <a href="/assets/Damini_Shrawan_CV.pdf" download class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-accent-blue text-bg-dark rounded-full hover:bg-accent-blue/90 transform hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(0,210,255,0.25)]">
+          Download CV
+        </a>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-toggle" class="md:hidden p-2 border border-gray-200 dark:border-white/5 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-accent-blue transition-all" aria-label="Toggle Mobile Menu">
+          <svg id="hamburger-icon" class="w-5 h-5 block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="fixed inset-y-0 right-0 z-40 w-full max-w-xs bg-bg-light/95 dark:bg-[#0c0c10]/95 backdrop-blur-lg border-l border-gray-200 dark:border-white/10 shadow-2xl p-6 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-between">
+    <div class="mt-20 flex flex-col gap-6 text-lg font-semibold">
+      <a href="#about" class="mobile-link text-gray-700 dark:text-gray-300 hover:text-accent-blue transition-colors flex items-center justify-between">
+        Journey <span class="text-xs font-mono text-gray-400">// 01</span>
+      </a>
+      <a href="#projects" class="mobile-link text-gray-700 dark:text-gray-300 hover:text-accent-blue transition-colors flex items-center justify-between">
+        Projects <span class="text-xs font-mono text-gray-400">// 02</span>
+      </a>
+      <a href="#ai-lab" class="mobile-link text-gray-700 dark:text-gray-300 hover:text-accent-blue transition-colors flex items-center justify-between">
+        AI Lab <span class="text-xs font-mono text-gray-400">// 03</span>
+      </a>
+      <a href="#stack" class="mobile-link text-gray-700 dark:text-gray-300 hover:text-accent-blue transition-colors flex items-center justify-between">
+        Skills <span class="text-xs font-mono text-gray-400">// 04</span>
+      </a>
+      <a href="#contact" class="mobile-link text-gray-700 dark:text-gray-300 hover:text-accent-blue transition-colors flex items-center justify-between">
+        Contact <span class="text-xs font-mono text-gray-400">// 05</span>
+      </a>
+    </div>
+    <div class="pt-6 border-t border-gray-200 dark:border-white/5">
+      <a href="/assets/Damini_Shrawan_CV.pdf" download class="flex items-center justify-center gap-2 w-full py-4 text-sm font-semibold bg-accent-blue text-bg-dark rounded-full hover:bg-accent-blue/90 transform active:scale-95 transition-all shadow-[0_0_20px_rgba(0,210,255,0.25)]">
+        Download CV
+      </a>
+    </div>
+  </div>
 
   <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center items-center relative px-6 py-20 overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12 z-10">
+  <section class="relative min-h-[90vh] flex flex-col justify-center items-center px-4 sm:px-8 py-16 sm:py-24 overflow-hidden z-10">
+    <div class="absolute top-[20%] left-[10%] w-[400px] h-[400px] bg-accent-blue/10 dark:bg-accent-blue/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-[20%] right-[10%] w-[350px] h-[350px] bg-accent-purple/10 dark:bg-accent-purple/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12 md:gap-14 lg:gap-16">
       <div class="flex-1 text-center lg:text-left fade-in">
-        <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-white">Damini Shrawan</h1>
-        <h2 class="text-2xl md:text-3xl font-medium text-accent mb-6">Architecting Scalable Systems | Building for AI</h2>
-        <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed">
-          Full-Stack Developer based in Mumbai, currently leading end-to-end delivery of luxury hospitality ecosystems and internal automation at Isprava.
+        <div class="inline-block px-3 py-1 bg-accent-blue/10 text-accent-blue text-xs font-mono rounded-full mb-6 border border-accent-blue/20">
+          TRANSITIONING TO AI ENGINEERING
+        </div>
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white font-display">
+          Damini Shrawan
+        </h1>
+        <h2 class="text-xl sm:text-3xl font-medium text-gray-600 dark:text-gray-300 mb-6 leading-snug">
+          Full-Stack Engineer building scalable web products — <span class="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent font-bold">now training to build AI systems.</span>
+        </h2>
+        <p class="text-md sm:text-lg text-gray-500 dark:text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+          Armed with 2+ years of production experience and 6+ shipped enterprise-ready assets at <span class="text-gray-900 dark:text-white font-medium">Isprava & Lohono</span>, I specialize in engineering resilient React, Node.js, and Ruby on Rails environments.
         </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
-          <a href="#projects" class="group relative px-8 py-4 bg-accent text-bg-dark font-semibold rounded-full overflow-hidden transition-transform hover:scale-105">
-            <span class="relative z-10 flex items-center gap-2">View Projects</span>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4 mb-12 max-w-md sm:max-w-none mx-auto lg:mx-0 w-full">
+          <a href="/assets/Damini_Shrawan_CV.pdf" download class="px-8 py-4 bg-accent-blue text-bg-dark font-semibold rounded-full text-center hover:bg-accent-blue/90 transform hover:scale-105 active:scale-95 transition-all shadow-[0_0_25px_rgba(0,210,255,0.3)]">
+            Download CV
           </a>
-          <a href="#contact" class="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-white/10 transition-all hover:border-accent/50 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]">
+          <a href="#projects" class="px-8 py-4 bg-gray-100 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 text-gray-900 dark:text-white font-semibold rounded-full text-center border border-gray-200 dark:border-white/10 transition-all">
+            View Projects
+          </a>
+          <a href="#contact" class="px-8 py-4 bg-white/5 hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 font-semibold rounded-full text-center border border-gray-200 dark:border-white/10 transition-all hover:border-accent-blue/50">
             Get in Touch
           </a>
         </div>
-        <div class="flex items-center justify-center lg:justify-start gap-6 fade-in">
-          <a href="https://www.linkedin.com/in/damini-shrawan/" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-accent transition-colors hover:scale-110 transform duration-200">
+
+        <!-- Social Icons -->
+        <div class="flex items-center justify-center lg:justify-start gap-6">
+          <a href="https://www.linkedin.com/in/damini-shrawan/" target="_blank" rel="noopener noreferrer" class="text-gray-400 dark:text-gray-400 hover:text-accent-blue transition-colors transform hover:scale-110 duration-200" aria-label="LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
-          <a href="https://github.com/daminishrawan" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-accent transition-colors hover:scale-110 transform duration-200">
+          <a href="https://github.com/daminishrawan" target="_blank" rel="noopener noreferrer" class="text-gray-400 dark:text-gray-400 hover:text-accent-blue transition-colors transform hover:scale-110 duration-200" aria-label="GitHub">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.03c3.15-.38 6.5-1.4 6.5-7.1a5.2 5.2 0 0 0-1.5-3.8 4.9 4.9 0 0 0-.1-3.8s-1.2-.4-3.9 1.4a13.3 13.3 0 0 0-7 0C6.2 3.8 5 4.2 5 4.2a4.9 4.9 0 0 0-.1 3.8A5.2 5.2 0 0 0 3 11.9c0 5.7 3.3 6.7 6.5 7.1a4.8 4.8 0 0 0-1 3.03V22"></path><path d="M9 20c-5 1.5-5-2.5-7-3"></path></svg>
           </a>
-          <a href="mailto:damini1998shrawan29@gmail.com" class="text-gray-400 hover:text-accent transition-colors hover:scale-110 transform duration-200">
+          <a href="mailto:damini1998shrawan29@gmail.com" class="text-gray-400 dark:text-gray-400 hover:text-accent-blue transition-colors transform hover:scale-110 duration-200" aria-label="Email">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
           </a>
         </div>
       </div>
-      <div class="flex-1 flex justify-center items-center fade-in">
-        <div class="relative w-64 h-64 md:w-96 md:h-96 opacity-80 spin-slow">
-          <svg viewBox="0 0 100 100" class="w-full h-full stroke-accent fill-transparent stroke-[0.5]">
-            <circle cx="50" cy="50" r="48" class="stroke-accent/30" />
-            <ellipse cx="50" cy="50" rx="48" ry="15" class="stroke-accent/50" />
-            <ellipse cx="50" cy="50" rx="15" ry="48" class="stroke-accent/50" />
-            <path d="M 15 15 L 85 85 M 15 85 L 85 15" class="stroke-accent/30" />
+
+      <!-- Hero Visual (Interactive Model / Tech Matrix Loop Showcase) -->
+      <div class="flex-1 flex justify-center items-center fade-in max-w-sm lg:max-w-md w-full">
+        <div class="relative w-full aspect-square bg-white/[0.02] dark:bg-black/20 border border-gray-200 dark:border-white/5 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-tr from-accent-purple/5 to-accent-blue/5"></div>
+          <!-- Abstract Neural Mesh Graphics -->
+          <svg viewBox="0 0 200 200" class="w-4/5 h-4/5 stroke-accent-blue stroke-1 fill-none opacity-90 animate-spin-slow">
+            <style>
+              .animate-spin-slow { animation: spin 45s linear infinite; }
+              @keyframes spin { 100% { transform: rotate(360deg); } }
+            </style>
+            <circle cx="100" cy="100" r="90" class="stroke-accent-blue/10" />
+            <circle cx="100" cy="100" r="60" class="stroke-accent-purple/20" />
+            <polygon points="100,10 190,100 100,190 10,100" class="stroke-accent-blue/30" />
+            <polygon points="100,40 160,100 100,160 40,100" class="stroke-accent-purple/30" />
+            <line x1="100" y1="10" x2="100" y2="190" class="stroke-accent-blue/10" />
+            <line x1="10" y1="100" x2="190" y2="100" class="stroke-accent-blue/10" />
+            <!-- Neural nodes -->
+            <circle cx="100" cy="10" r="4" class="fill-accent-blue" />
+            <circle cx="190" cy="100" r="4" class="fill-accent-blue" />
+            <circle cx="100" cy="190" r="4" class="fill-accent-blue" />
+            <circle cx="10" cy="100" r="4" class="fill-accent-blue" />
+            <circle cx="100" cy="40" r="3" class="fill-accent-purple" />
+            <circle cx="160" cy="100" r="3" class="fill-accent-purple" />
+            <circle cx="100" cy="160" r="3" class="fill-accent-purple" />
+            <circle cx="40" cy="100" r="3" class="fill-accent-purple" />
           </svg>
+          <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-[10px] font-mono text-gray-400">
+            <span>SYS: RE_INIT_STABLE</span>
+            <span>ACCENT: #00D2FF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats Bar -->
+    <div class="max-w-7xl mx-auto w-full mt-24 pt-8 border-t border-gray-200 dark:border-white/5 z-10 fade-in">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center sm:text-left">
+        <div>
+          <div class="text-[10px] font-mono text-accent-blue uppercase tracking-widest mb-1">PROD ROADMAP</div>
+          <div class="text-xl sm:text-2xl font-bold font-display text-gray-900 dark:text-white">2+ Years XP</div>
+        </div>
+        <div>
+          <div class="text-[10px] font-mono text-accent-purple uppercase tracking-widest mb-1">DELIVERED ASSETS</div>
+          <div class="text-xl sm:text-2xl font-bold font-display text-gray-900 dark:text-white">6+ Shipped Assets</div>
+        </div>
+        <div>
+          <div class="text-[10px] font-mono text-accent-teal uppercase tracking-widest mb-1">ARCHITECTURE</div>
+          <div class="text-xl sm:text-2xl font-bold font-display text-gray-900 dark:text-white">Full-Stack Core</div>
+        </div>
+        <div>
+          <div class="text-[10px] font-mono text-accent-blue uppercase tracking-widest mb-1">ACADEMICS</div>
+          <div class="text-xl sm:text-2xl font-bold font-display text-gray-900 dark:text-white">IIT M.Tech (Pending)</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Experience & Education Section -->
-  <section id="experience" class="py-24 px-6 relative">
+  <!-- IIT Jodhpur Section (Prominent AI Engineering Path Banner) -->
+  <section id="iit-jodhpur" class="py-20 px-6 relative z-10">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-16 flex items-center gap-4 fade-in">
-        <span class="w-8 h-[2px] bg-accent"></span> My Journey
+      <div class="relative bg-gradient-to-br from-accent-purple/10 to-accent-blue/10 dark:from-accent-purple/5 dark:to-accent-blue/5 border border-accent-purple/20 dark:border-white/10 rounded-3xl p-8 sm:p-12 overflow-hidden shadow-xl">
+        <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-accent-blue/5 blur-3xl rounded-full pointer-events-none"></div>
+        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+          <div class="flex-1">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-accent-purple/20 text-accent-purple text-xs font-mono rounded-full mb-6 border border-accent-purple/30">
+              ACADEMIC TRAINING ROADMAP
+            </span>
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 font-display text-gray-900 dark:text-white">
+              Next Chapter: M.Tech in Artificial Intelligence
+            </h2>
+            <p class="text-accent-blue font-mono font-medium mb-6 text-lg">
+              IIT Jodhpur &bull; Starting 16 Aug 2026 (Expected Graduation: 2028)
+            </p>
+            <p class="text-gray-600 dark:text-gray-400 uppercase tracking-widest text-[10px] font-mono mb-4">FUTURE CURRICULUM PREVIEW &bull; CORE ACADEMICS</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div class="flex items-center gap-2 text-sm text-gray-800 dark:text-gray-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-purple"></span> Machine Learning Models
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-800 dark:text-gray-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-purple"></span> Deep Neural Networks
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-800 dark:text-gray-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-purple"></span> Optimization for Data Science
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-800 dark:text-gray-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-blue"></span> Advanced Algorithmic Systems
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-800 dark:text-gray-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-blue"></span> NLP & Autonomous Agents
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-800 dark:text-gray-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-blue"></span> Production ML-Ops Pipelines
+              </div>
+            </div>
+          </div>
+          <div class="lg:w-1/3 w-full self-stretch bg-white/20 dark:bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="text-[10px] font-mono text-gray-400 mb-2">// PROGRAM PARAMETERS</div>
+              <div class="text-lg font-bold text-gray-900 dark:text-white mb-1">M.Tech Track</div>
+              <div class="text-xs text-gray-400">Post-Grad Diploma with full Master's Thesis upgrade option.</div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-gray-200 dark:border-white/5">
+              <div class="text-xs text-accent-blue font-mono font-medium">Goal: Production AI Engineering & Deployment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey Section (Experience & Education) -->
+  <section id="about" class="py-16 sm:py-24 px-4 sm:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-16 flex items-center gap-4 fade-in font-display">
+        <span class="w-8 h-[2px] bg-accent-blue"></span> Professional Journey
       </h2>
+      
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-        <!-- Experience -->
+        <!-- Experience Timeline -->
         <div>
-          <h3 class="text-2xl font-semibold mb-10 text-white">Experience</h3>
-          <div class="relative border-l border-white/10 ml-4 md:ml-0">
+          <h3 class="text-2xl font-bold mb-10 text-gray-900 dark:text-white flex items-center gap-3">
+            <span class="text-accent-blue select-all text-xs font-mono">// 01</span> Experience
+          </h3>
+          <div class="relative border-l border-gray-300 dark:border-white/10 ml-4 sm:ml-5 lg:ml-0">
             <!-- Job 1 -->
             <div class="mb-12 relative pl-8 group fade-in">
-              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)]"></div>
-              <div class="text-accent font-mono text-sm mb-1">Jul 2024 — Present</div>
-              <div class="text-xl font-semibold text-white">Software Developer</div>
-              <div class="text-gray-400 font-medium">Isprava</div>
-              <div class="bg-white/5 border border-white/5 rounded-2xl p-6 mt-4">
-                <p class="text-gray-200 text-sm mb-4 leading-relaxed">Leading end-to-end full-stack delivery of luxury hospitality ecosystems. Specializing in architecting scalable React/TypeScript systems, designing robust API integrations, and driving technical parity between business verticals.</p>
-                <ul class="list-disc pl-4 space-y-2 text-gray-400 text-sm marker:text-accent/70">
-                  <li class="leading-relaxed">Engineered the Lohono property platform with multi-config checkout, dynamic pricing, and a WhatsApp/SMS integrated referral programme.</li>
-                  <li class="leading-relaxed">Spearheaded the Trip Planner guest app, managing complex state machines for session-based reservations, meal planning, and Web Check-in.</li>
-                  <li class="leading-relaxed">Architected internal operations (LMS/OI) including Food Ordering, KOT flows, and complex financial logic for TDS/Commission and Client Ledgers.</li>
-                  <li class="leading-relaxed">Developed marketing sites (Solene & Chapter) focusing on SEO optimization, multi-step validation forms, and DRY architecture.</li>
-                  <li class="leading-relaxed">Shifted legacy code to modular, component-based structures (React 18, Vite, Recoil) and established repo-wide CI/CD stability patterns.</li>
+              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent-blue shadow-[0_0_15px_rgba(0,210,255,1)] ring-4 ring-accent-blue/20 scale-125 z-10"></div>
+              <div class="flex flex-wrap items-center gap-2 mb-1">
+                <div class="text-accent-blue font-mono text-sm">Jul 2024 — Present</div>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold bg-accent-blue/10 text-accent-blue border border-accent-blue/20 tracking-wider uppercase font-mono animate-pulse">
+                  Active Highlighted Role
+                </span>
+              </div>
+              <div class="text-xl font-bold text-gray-900 dark:text-white">Software Developer</div>
+              <div class="text-gray-500 font-medium text-sm">Isprava / Lohono Stays (Mumbai, India)</div>
+              <div class="bg-accent-blue/[0.03] dark:bg-accent-blue/[0.02] border border-accent-blue/30 dark:border-accent-blue/10 rounded-2xl p-6 mt-4 shadow-[0_0_30px_rgba(0,210,255,0.03)] hover:bg-accent-blue/[0.05] transition-all">
+                <p class="text-gray-700 dark:text-gray-200 text-sm mb-4 leading-relaxed font-medium">
+                  Leading end-to-end full-stack development of luxury hospitality platforms, engineering high-octane customer-facing book flows, operational systems, and performance landing web products.
+                </p>
+                <ul class="list-disc pl-4 space-y-3 text-gray-700 dark:text-gray-200 text-sm marker:text-accent-blue">
+                  <li class="leading-relaxed"><strong>Core frontend engineer on lohono.com</strong>, owning the full booking funnel (discovery, listing, detail, checkout, Razorpay) and shipping greenfield surfaces from scratch – Property Cluster (multi-villa) with full-stack Express review/recommendation APIs, Referral Programme, Harmony Weddings, and Schedule Callback – across 100 commits and PRs over 21 months.</li>
+                  <li class="leading-relaxed"><strong>Built the Lohono Trip Planner guest app from scratch</strong> (React 18, TypeScript, Vite 6, Tailwind CSS, Recoil, Radix/Shadcn UI) with 11+ custom REST API hooks for meal ordering and a multi-guest Web Check-in KYC flow; refactored a 2,300-line monolith into hook-driven modules, removing 1,100+ lines across 81 files – 9 PRs and 25+ tickets in 2.5 months.</li>
+                  <li class="leading-relaxed"><strong>Delivered the Isprava LMS internal CRM</strong> across 5 product verticals (React 18, MUI, JsSIP/WebRTC, Sentry) – a 15+ component villa food-ordering system with KOT printing, Client Ledger with preview-gated downloads, Delivery Tracker, and the Rental Trip Details revamp; centralized a shared currency utility and added Jest/RTL coverage.</li>
+                  <li class="leading-relaxed"><strong>Sole frontend owner of the Solene membership platform</strong> – multi-step application form with complex validation, preview mode, and cross-page state retention; rebuilt the marketing site, shipped JSON-driven legal pages, and configured SEO sitemap, AWS S3/CloudFront, GitHub Actions CI/CD, and n8n webhook submissions.</li>
                 </ul>
               </div>
             </div>
             <!-- Job 2 -->
             <div class="mb-12 relative pl-8 group fade-in">
-              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)]"></div>
-              <div class="text-accent font-mono text-sm mb-1">Jan 2024 — Jul 2024</div>
-              <div class="text-xl font-semibold text-white">Frontend Developer Intern</div>
-              <div class="text-gray-400 font-medium">Isprava</div>
-              <div class="bg-white/5 border border-white/5 rounded-2xl p-6 mt-4">
-                <p class="text-gray-200 text-sm mb-4 leading-relaxed">Drove end-to-end delivery for luxury hospitality platforms, focusing on React 18/TypeScript architecture, API integration, and SEO.</p>
-                <ul class="list-disc pl-4 space-y-2 text-gray-400 text-sm marker:text-accent/70">
-                  <li class="leading-relaxed">Built core consumer features for the Lohono website including checkout, pricing, and referral systems.</li>
-                  <li class="leading-relaxed">Developed the Trip Planner guest app for meal planning and Web Check-in.</li>
-                  <li class="leading-relaxed">Automated internal operations in Isprava LMS/OI (food ordering, KOT, financial logic).</li>
-                  <li class="leading-relaxed">Maintained and optimized Solene and Chapter marketing sites.</li>
+              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent-blue shadow-[0_0_10px_rgba(0,210,255,0.8)] group-hover:scale-150 transition-transform duration-350"></div>
+              <div class="text-accent-blue font-mono text-sm mb-1">Jan 2024 — Jul 2024</div>
+              <div class="text-xl font-bold text-gray-900 dark:text-white">Frontend Developer Intern</div>
+              <div class="text-gray-500 font-medium text-sm">Isprava / Lohono Stays (Mumbai, India)</div>
+              <div class="bg-white/40 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl p-6 mt-4">
+                <p class="text-gray-700 dark:text-gray-300 text-sm mb-4 leading-relaxed">
+                  Owned business critical customer interfaces and lead-gen pipelines, bringing high fidelity components to deployment in a rapid-deployment agile environment.
+                </p>
+                <ul class="list-disc pl-4 space-y-3 text-gray-600 dark:text-gray-400 text-sm marker:text-accent-blue/70">
+                  <li class="leading-relaxed"><strong>Engineered an appointment scheduling system</strong> (date picker, time-slot carousel, rescheduling, edge-case handling) and a scroll-aware calendar positioning hook that resolved recurring date-picker defects across listing, detail, and collection pages.</li>
+                  <li class="leading-relaxed"><strong>Built a multi-step lead capture form (Next.js 14)</strong> with OTP verification, Google reCAPTCHA v3, UTM tracking, and GTM event instrumentation – an end-to-end form pipeline from UI through CRM lead submission.</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        <!-- Education -->
+
+        <!-- Education Timeline -->
         <div>
-          <h3 class="text-2xl font-semibold mb-10 text-white">Education</h3>
-          <div class="relative border-l border-white/10 ml-4 md:ml-0">
-            <!-- Edu 1 -->
+          <h3 class="text-2xl font-bold mb-10 text-gray-900 dark:text-white flex items-center gap-3">
+            <span class="text-accent-blue select-all text-xs font-mono">// 02</span> Education History
+          </h3>
+          <div class="relative border-l border-gray-300 dark:border-white/10 ml-4 sm:ml-5 lg:ml-0">
+            <!-- Edu 1 (IIT Jodhpur) -->
             <div class="mb-12 relative pl-8 group fade-in">
-              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)]"></div>
-              <div class="text-accent font-mono text-sm mb-1">Mar 2023 — Aug 2023</div>
-              <div class="text-xl font-semibold text-white">PG-DMC, Mobile Computing</div>
-              <div class="text-gray-400 font-medium">C-DAC Pune (GPA: 6.5)</div>
-              <div class="bg-white/5 border border-white/5 rounded-2xl p-5 mt-4">
-                <p class="text-gray-300 text-sm leading-relaxed">Completed a specialized program focused on designing and developing mobile applications. Gained hands-on experience in Android application development, UI/UX implementation, API integration, database management, and performance optimization. Worked on real-time projects involving Java, Android SDK, RESTful services, and responsive mobile design principles.</p>
+              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent-blue shadow-[0_0_15px_rgba(0,210,255,1)] ring-4 ring-accent-blue/20 scale-125 z-10 animate-pulse"></div>
+              <div class="flex flex-wrap items-center gap-2 mb-1">
+                <div class="text-accent-blue font-mono text-sm">16 Aug 2026 — Aug 2028 (Expected)</div>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold bg-accent-blue/10 text-accent-blue border border-accent-blue/20 tracking-wider uppercase font-mono">
+                  Upcoming Executive M.Tech
+                </span>
+              </div>
+              <div class="text-xl font-bold text-gray-900 dark:text-white">Executive M.Tech in Artificial Intelligence</div>
+              <div class="text-gray-500 font-medium text-sm">Indian Institute of Technology, Jodhpur (Online/Hybrid)</div>
+              <div class="bg-accent-blue/[0.03] dark:bg-accent-blue/[0.02] border border-accent-blue/30 dark:border-accent-blue/10 rounded-2xl p-5 mt-4 shadow-[0_0_30px_rgba(0,210,255,0.03)]/5">
+                <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-3">
+                  Specialized advanced program focusing on Machine Learning, Deep Learning, Artificial Intelligence, Optimization for Data Science, Advanced Data Structures & Algorithms, ML-Ops & DL-Ops, NLP, Computer Vision, and Advanced AI & Autonomous Systems.
+                </p>
               </div>
             </div>
             <!-- Edu 2 -->
             <div class="mb-12 relative pl-8 group fade-in">
-              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)]"></div>
-              <div class="text-accent font-mono text-sm mb-1">Jun 2017 — Jun 2021</div>
-              <div class="text-xl font-semibold text-white">B.Tech, Electrical Engineering</div>
-              <div class="text-gray-400 font-medium">CSVTU Bhilai (GPA: 7.4)</div>
-              <div class="bg-white/5 border border-white/5 rounded-2xl p-5 mt-4">
-                <p class="text-gray-300 text-sm leading-relaxed">Completed undergraduate studies with a strong foundation in core electrical engineering subjects including Power Systems, Electrical Machines, Control Systems, Power Electronics, and Network Theory. Developed analytical and problem-solving skills while working on circuit design, electrical system analysis, and real-time engineering applications.</p>
+              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent-blue shadow-[0_0_10px_rgba(0,210,255,0.8)]"></div>
+              <div class="text-accent-blue font-mono text-sm mb-1">Mar 2023 — Aug 2023</div>
+              <div class="text-xl font-bold text-gray-900 dark:text-white">PG-DMC, Mobile Computing</div>
+              <div class="text-gray-500 font-medium text-sm">C-DAC Pune (GPA: 6.5)</div>
+              <div class="bg-white/40 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl p-5 mt-4">
+                <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                  Acquired extensive training in mobile architectures, Android framework development, DB optimization, and RESTful service modeling.
+                </p>
               </div>
             </div>
-            <!-- Edu 3 -->
+            <!-- Edu 2 -->
             <div class="mb-12 relative pl-8 group fade-in">
-              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)]"></div>
-              <div class="text-accent font-mono text-sm mb-1">Mar 2016 — May 2017</div>
-              <div class="text-xl font-semibold text-white">Higher Secondary (XII)</div>
-              <div class="text-gray-400 font-medium">B.S.P Senior Secondary School (GPA: 6.5)</div>
-              <div class="bg-white/5 border border-white/5 rounded-2xl p-5 mt-4">
-                <p class="text-gray-300 text-sm leading-relaxed">Completed Higher Secondary Education with a specialization in Science, focusing on Physics, Chemistry, and Mathematics (PCM). Built a strong analytical and problem-solving foundation through theoretical learning and practical laboratory work.</p>
+              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent-blue shadow-[0_0_10px_rgba(0,210,255,0.8)]"></div>
+              <div class="text-accent-blue font-mono text-sm mb-1">Jun 2017 — Jun 2021</div>
+              <div class="text-xl font-bold text-gray-900 dark:text-white">B.Tech, Electrical Engineering</div>
+              <div class="text-gray-500 font-medium text-sm">CSVTU Bhilai (GPA: 7.4)</div>
+              <div class="bg-white/40 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl p-5 mt-4">
+                <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                  Erected solid analytic fundamentals focusing on complex signal networks, power logic, and system architectures. Gained hands-on circuit layout expertise.
+                </p>
               </div>
             </div>
           </div>
@@ -162,158 +389,232 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="py-24 px-6 relative bg-white/[0.02]">
+  <!-- Projects Section (Factual details matching markdown source records) -->
+  <section id="projects" class="py-16 sm:py-24 px-4 sm:px-8 relative bg-gray-50 dark:bg-white/[0.01] z-10">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-20 flex items-center gap-4 fade-in">
-        <span class="w-8 h-[2px] bg-accent"></span> Key Projects
+      <h2 class="text-3xl md:text-4xl font-bold mb-20 flex items-center gap-4 fade-in font-display">
+        <span class="w-8 h-[2px] bg-accent-blue"></span> Production Shipped Assets
       </h2>
+      
       <div class="flex flex-col gap-24">
-        
-        <!-- Project 1: Lohono Stays -->
+        <!-- Project 1: Lohono Rentals -->
         <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center group fade-in">
-          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] lg:aspect-video shadow-2xl">
-            <div class="absolute inset-0 bg-bg-dark/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80" alt="Lohono Stays" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <!-- Abstract Model UI Cover -->
+          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 aspect-[16/10] sm:aspect-video lg:aspect-video select-none shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#12131C] to-[#25283D] flex flex-col justify-between p-6">
+              <div class="flex justify-between items-center text-[10px] font-mono text-[#00d2ff]">
+                <span>MODEL_SPEC: WEB_FUNNEL_18</span>
+                <span>STATUS: STABLE</span>
+              </div>
+              <div class="space-y-4">
+                <div class="h-1 bg-[#00d2ff]/30 rounded-full w-4/5"></div>
+                <div class="h-1 bg-accent-purple/30 rounded-full w-3/5"></div>
+                <div class="h-1 bg-accent-blue/30 rounded-full w-2/3"></div>
+              </div>
+              <div class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">// ASSET PEER PIPELINE</div>
+            </div>
           </div>
           <div class="w-full lg:w-1/2 flex flex-col">
-            <div class="text-accent text-sm font-mono mb-3">Consumer Platform</div>
-            <h3 class="text-3xl font-bold text-white mb-6 group-hover:text-accent transition-colors">Lohono Stays</h3>
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6 relative overflow-hidden">
-              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent/50"></div>
-              <p class="text-gray-300 mb-4 text-base leading-relaxed">Lohono Stays is a full-stack web application that powers discovery and booking of luxury villas and holiday homes across India and Asia, addressing the need for a unified, high-quality booking experience for discerning travelers.</p>
-              <ul class="list-disc pl-5 space-y-1.5 text-gray-400 text-sm marker:text-accent/70">
-                <li class="leading-relaxed">Architected a server-side rendered (SSR) React application with Razzle and Express to improve SEO and first-load performance for property and destination pages.</li>
-                <li class="leading-relaxed">Implemented end-to-end booking flows—property search, filters, villa/cluster detail pages, checkout, reservations, and coupon validation.</li>
-                <li class="leading-relaxed">Built loyalty and referral features (points balance, referral codes, referee bonuses) and integrated CleverTap for push notifications and analytics.</li>
-                <li class="leading-relaxed">Optimized delivery with Brotli/gzip compression, Workbox-based PWA (precaching, caching strategies), and PM2 cluster mode for production scaling.</li>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-accent-blue text-xs font-mono uppercase tracking-widest">FRONTEND & API CONTRACT</span>
+            </div>
+            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 group-hover:text-accent-blue transition-colors">Lohono Rentals</h3>
+            <div class="bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl p-6 mb-6 relative overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent-blue"></div>
+              <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                <strong class="text-gray-900 dark:text-white">IMPACT:</strong> Shipped greenfield product funnels supporting multi-room room configurations and real-time scheduling modules, increasing client conversion.
+              </p>
+              <ul class="list-disc pl-5 space-y-1.5 text-gray-600 dark:text-gray-400 text-sm marker:text-accent-blue/70">
+                <li class="leading-relaxed">Architected the complete Property Cluster detail logic with high-performance reviews and similar-properties endpoints using Express server paths.</li>
+                <li class="leading-relaxed">Engineered an end-to-end Schedule Callback appointment scheduling system, eliminating layout bugs and Safari check-in date selection failures.</li>
+                <li class="leading-relaxed">Optimized asset performance: translated raw Goa campaign frames from 24MB down to ~397KB via a compressed WebP asset pipeline.</li>
               </ul>
             </div>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">React 18</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">TypeScript</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Razzle (SSR)</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Express</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Recoil</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Workbox (PWA)</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">React 18</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">TypeScript</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">Razzle (SSR)</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">Express</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">Recoil</span>
             </div>
           </div>
         </div>
 
-        <!-- Project 2: Isprava LMS / OI -->
+        <!-- Project 2: Trip Planner -->
         <div class="flex flex-col lg:flex-row-reverse gap-10 lg:gap-16 items-center group fade-in">
-          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] lg:aspect-video shadow-2xl">
-            <div class="absolute inset-0 bg-bg-dark/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80" alt="Isprava LMS" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <!-- Abstract Model UI Cover -->
+          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 aspect-[16/10] sm:aspect-video lg:aspect-video select-none shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#1E112A] to-[#121A2E] flex flex-col justify-between p-6">
+              <div class="flex justify-between items-center text-[10px] font-mono text-[#9D4EDD]">
+                <span>MODEL_SPEC: SELECTOR_HOOK</span>
+                <span>STATUS: SHIPPED</span>
+              </div>
+              <div class="flex justify-center items-center h-20">
+                <svg viewBox="0 0 100 40" class="w-1/2 stroke-[#9D4EDD] fill-none stroke-2">
+                  <path d="M10,20 Q30,5 50,20 T90,20" />
+                </svg>
+              </div>
+              <div class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">// HOOK DISCRETE LOGIC</div>
+            </div>
           </div>
           <div class="w-full lg:w-1/2 flex flex-col">
-            <div class="text-accent text-sm font-mono mb-3">Operations Interface</div>
-            <h3 class="text-3xl font-bold text-white mb-6 group-hover:text-accent transition-colors">Isprava LMS / OI</h3>
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6 relative overflow-hidden">
-              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent/50"></div>
-              <p class="text-gray-300 mb-4 text-base leading-relaxed">Internal operations platform that centralizes luxury vacation rental and real-estate workflows—from enquiries and bookings to development opportunities, concierge, and approvals.</p>
-              <ul class="list-disc pl-5 space-y-1.5 text-gray-400 text-sm marker:text-accent/70">
-                <li class="leading-relaxed">Architected a modular React SPA with context-based service providers for 25+ domains.</li>
-                <li class="leading-relaxed">Implemented role-based access control (ACL) across 40+ page templates and integrated @lohono/react-auth for secure session handling.</li>
-                <li class="leading-relaxed">Built in-app VoIP using JsSIP for call handling within the enquiry and call-receiver flows, with call logging and recording support.</li>
-                <li class="leading-relaxed">Optimized front-end performance via route-level code splitting, debounce/throttle on search and filters, and a build:lean pipeline with gzip compression.</li>
-                <li class="leading-relaxed">Delivered features including: rental trip and calendar management, food ordering and KOT workflows, delivery trackers, and client ledgers.</li>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-accent-blue text-xs font-mono uppercase tracking-widest">TRANSACTIONAL GUEST PORTAL</span>
+            </div>
+            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 group-hover:text-accent-purple transition-colors">Trip Planner</h3>
+            <div class="bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl p-6 mb-6 relative overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent-purple"></div>
+              <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                <strong class="text-gray-900 dark:text-white">IMPACT:</strong> Re-engineered a post-checkout guest platform to manage complex meal schedules, leading the codebase refactoring.
+              </p>
+              <ul class="list-disc pl-5 space-y-1.5 text-gray-600 dark:text-gray-400 text-sm marker:text-accent-purple/70">
+                <li class="leading-relaxed">Refactored a highly complex, 2,300-line React monolith into a selector-driven hook/utility architecture, purging <strong class="text-gray-900 dark:text-white">1,146 lines</strong> of redundant, duplicate module logic.</li>
+                <li class="leading-relaxed">Designed 11+ REST API integrations (Vite proxy configuration) supporting the active reservation lifecycle.</li>
+                <li class="leading-relaxed">Developed the Web Check-in Guest KYC module with validated multipart FormData file-uploads.</li>
               </ul>
             </div>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">React 18</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">TypeScript</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Material-UI</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">React Router v6</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">JsSIP</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Sentry</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">React 18</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">TypeScript</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">Tailwind CSS</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">Radix UI</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">Axios</span>
             </div>
           </div>
         </div>
 
-        <!-- Project 3: Trip Planner -->
+        <!-- Project 3: Isprava LMS / Operations Interface (OI) -->
         <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center group fade-in">
-          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] lg:aspect-video shadow-2xl">
-            <div class="absolute inset-0 bg-bg-dark/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-            <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1600&q=80" alt="Trip Planner" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <!-- Abstract Model UI Cover -->
+          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 aspect-[16/10] sm:aspect-video lg:aspect-video select-none shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#0F141D] to-[#1F2F3B] flex flex-col justify-between p-6">
+              <div class="flex justify-between items-center text-[10px] font-mono text-accent-teal">
+                <span>MODEL_SPEC: DATA_STEPS</span>
+                <span>STATUS: OPERATIONAL</span>
+              </div>
+              <div class="space-y-2">
+                <div class="flex gap-2">
+                  <div class="h-3 w-3 rounded-full bg-accent-teal"></div>
+                  <div class="h-3 w-16 bg-white/20 rounded"></div>
+                </div>
+                <div class="flex gap-2">
+                  <div class="h-3 w-3 rounded-full bg-accent-purple"></div>
+                  <div class="h-3 w-24 bg-white/20 rounded"></div>
+                </div>
+              </div>
+              <div class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">// DB ALIGNED STREAMS</div>
+            </div>
           </div>
           <div class="w-full lg:w-1/2 flex flex-col">
-            <div class="text-accent text-sm font-mono mb-3">Guest-Facing App</div>
-            <h3 class="text-3xl font-bold text-white mb-6 group-hover:text-accent transition-colors">Trip Planner</h3>
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6 relative overflow-hidden">
-              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent/50"></div>
-              <p class="text-gray-300 mb-4 text-base leading-relaxed">Trip management web app that lets guests view trip details, pre-book meal plans (breakfast, in-house dining, à la carte, BBQ), manage orders, and complete web check-in with guest details and document upload.</p>
-              <ul class="list-disc pl-5 space-y-1.5 text-gray-400 text-sm marker:text-accent/70">
-                <li class="leading-relaxed">Architected a React SPA with URL-driven trip context (encoded trip/session params), Recoil state, and a modular API layer.</li>
-                <li class="leading-relaxed">Implemented meal-plan flows with date/time and guest-count selection, order-closure rules, and place/cancel order APIs.</li>
-                <li class="leading-relaxed">Built a web check-in flow with validated forms (name, document type, file upload, optional children with age validation) and document-type APIs.</li>
-                <li class="leading-relaxed">Integrated Google Tag Manager for page views and events, environment-based config, and responsive layouts with mobile-first components.</li>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-accent-blue text-xs font-mono uppercase tracking-widest">INTERNAL CRM & CRM STACK</span>
+            </div>
+            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 group-hover:text-accent-blue transition-colors">Isprava LMS / Operations Interface (OI)</h3>
+            <div class="bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl p-6 mb-6 relative overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent-teal"></div>
+              <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                <strong class="text-gray-900 dark:text-white">IMPACT:</strong> Shipped critical internal components and payment workflows utilized daily by GRE/GRM onsite operators.
+              </p>
+              <ul class="list-disc pl-5 space-y-1.5 text-gray-600 dark:text-gray-400 text-sm marker:text-accent-teal/70">
+                <li class="leading-relaxed">Architected the first phase of the major <strong class="text-gray-900 dark:text-white">Trip Details Page Revamp</strong>, deploying split forms, Notes stepper timelines, and consolidated Availed Services panels.</li>
+                <li class="leading-relaxed">Created a reusable, highly robust Indian currency formatting package applied to financial spreadsheets and payment trackers.</li>
+                <li class="leading-relaxed">Designed the Client Ledger filter with preview-gated downloads, avoiding half-loaded exports.</li>
               </ul>
             </div>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">React 18</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Vite</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Recoil</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Radix UI</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Tailwind CSS</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">React 18</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">TypeScript</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">MUI v5</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">Formik</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">Yup</span>
             </div>
           </div>
         </div>
 
         <!-- Project 4: Solene -->
         <div class="flex flex-col lg:flex-row-reverse gap-10 lg:gap-16 items-center group fade-in">
-          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] lg:aspect-video shadow-2xl">
-            <div class="absolute inset-0 bg-bg-dark/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80" alt="Solene" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <!-- Abstract Model UI Cover -->
+          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 aspect-[16/10] sm:aspect-video lg:aspect-video select-none shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#2A1D0F] to-[#121B1A] flex flex-col justify-between p-6">
+              <div class="flex justify-between items-center text-[10px] font-mono text-[#00f5d4]">
+                <span>MODEL_SPEC: GULP_PIPELINE</span>
+                <span>STATUS: OPTIMIZED</span>
+              </div>
+              <div class="flex justify-around items-center h-20">
+                <div class="h-6 w-6 rounded-full border-2 border-dashed border-[#00f5d4] animate-spin"></div>
+                <div class="h-6 w-6 rounded-full border-2 border-[#00f5d4]"></div>
+              </div>
+              <div class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">// CACHE REV ACTIONS</div>
+            </div>
           </div>
           <div class="w-full lg:w-1/2 flex flex-col">
-            <div class="text-accent text-sm font-mono mb-3">Membership Platform</div>
-            <h3 class="text-3xl font-bold text-white mb-6 group-hover:text-accent transition-colors">Solene</h3>
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6 relative overflow-hidden">
-              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent/50"></div>
-              <p class="text-gray-300 mb-4 text-base leading-relaxed">Marketing and application site for Solene, a private members’ club—helping the brand tell its story and capture leads and membership applications in one place.</p>
-              <ul class="list-disc pl-5 space-y-1.5 text-gray-400 text-sm marker:text-accent/70">
-                <li class="leading-relaxed">Architected a multi-page, component-based front end with Gulp (HTML partials, SCSS, env-based build) and clean-URL routing for SEO and maintainability.</li>
-                <li class="leading-relaxed">Implemented membership application flows (multi-step form, dependents, Isprava/Chapter options) with validation and submission to the Lohono REST API.</li>
-                <li class="leading-relaxed">Integrated event listing and registration via N8N webhooks, lead capture with API key auth, and optional geo/tracking.</li>
-                <li class="leading-relaxed">Built CI/CD with GitHub Actions and deployed static assets to AWS S3, with sitemap/robots and cache-busted assets.</li>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-accent-blue text-xs font-mono uppercase tracking-widest">PRIVATE MEMBERS CLUB STATIC WEB</span>
+            </div>
+            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 group-hover:text-accent-purple transition-colors">Solene</h3>
+            <div class="bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl p-6 mb-6 relative overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent-teal"></div>
+              <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                <strong class="text-gray-900 dark:text-white">IMPACT:</strong> Preserved maximum conversion rates for luxury membership enrollments via custom static compilers and API loaders.
+              </p>
+              <ul class="list-disc pl-5 space-y-1.5 text-gray-600 dark:text-gray-400 text-sm marker:text-accent-teal/70">
+                <li class="leading-relaxed">Developed key multi-step schema integrations on custom member applications, stabilizing form submission triggers in production.</li>
+                <li class="leading-relaxed">Built and deployed Gulp 5 static pipelines leveraging `gulp-rev` for cache-busted production assets.</li>
+                <li class="leading-relaxed">Mapped static JSON legal declarations (`terms-data.json`), dividing monolithic content scripts into responsive render blocks.</li>
               </ul>
             </div>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">HTML5</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">SCSS</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Gulp 5</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">N8N</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">AWS S3</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">HTML5 / SCSS</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">Vanilla JS</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">Gulp 5</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">N8N Webhooks</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">AWS S3</span>
             </div>
           </div>
         </div>
 
         <!-- Project 5: Chapter -->
         <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center group fade-in">
-          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] lg:aspect-video shadow-2xl">
-            <div class="absolute inset-0 bg-bg-dark/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-            <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1600&q=80" alt="Chapter" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <!-- Abstract Model UI Cover -->
+          <div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 aspect-[16/10] sm:aspect-video lg:aspect-video select-none shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#14151D] to-[#2B354C] flex flex-col justify-between p-6">
+              <div class="flex justify-between items-center text-[10px] font-mono text-[#00d2ff]">
+                <span>MODEL_SPEC: OTP_VERIFIER</span>
+                <span>STATUS: ENFORCED</span>
+              </div>
+              <div class="space-y-4">
+                <div class="grid grid-cols-4 gap-2">
+                  <div class="h-6 bg-accent-blue/20 rounded flex items-center justify-center font-mono text-xs text-accent-blue">*</div>
+                  <div class="h-6 bg-accent-blue/20 rounded flex items-center justify-center font-mono text-xs text-accent-blue">*</div>
+                  <div class="h-6 bg-accent-blue/20 rounded flex items-center justify-center font-mono text-xs text-accent-blue">*</div>
+                  <div class="h-6 bg-accent-blue/20 rounded flex items-center justify-center font-mono text-xs text-accent-blue">*</div>
+                </div>
+              </div>
+              <div class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">// SECURE CAPTURE FLOW</div>
+            </div>
           </div>
           <div class="w-full lg:w-1/2 flex flex-col">
-            <div class="text-accent text-sm font-mono mb-3">Marketing Website</div>
-            <h3 class="text-3xl font-bold text-white mb-6 group-hover:text-accent transition-colors">Chapter</h3>
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6 relative overflow-hidden">
-              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent/50"></div>
-              <p class="text-gray-300 mb-4 text-base leading-relaxed">Marketing and lead-generation platform for luxury villas in Goa and Alibaug, driving inquiries and agent sign-ups for The Chapter’s property portfolio.</p>
-              <ul class="list-disc pl-5 space-y-1.5 text-gray-400 text-sm marker:text-accent/70">
-                <li class="leading-relaxed">Architected a full marketing site with Next.js 14 (App Router), TypeScript, and static export for fast, CDN-friendly deployment.</li>
-                <li class="leading-relaxed">Implemented lead capture with reCAPTCHA v3 and server-side verification, OTP flows for Goa/NRI forms, and structured server actions.</li>
-                <li class="leading-relaxed">Built responsive, animated experiences using Framer Motion and scroll-driven UI; optimized assets with responsive picture/srcSet and Sharp.</li>
-                <li class="leading-relaxed">Delivered SEO and discoverability via per-page metadata, Open Graph, Twitter cards, canonical URLs, and JSON-LD structured data.</li>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-accent-blue text-xs font-mono uppercase tracking-widest">NEXT.JS BRAND ENGINE</span>
+            </div>
+            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 group-hover:text-accent-blue transition-colors">Chapter</h3>
+            <div class="bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl p-6 mb-6 relative overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent-blue"></div>
+              <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                <strong class="text-gray-900 dark:text-white">IMPACT:</strong> Architected Next.js App Router templates to capture verified domestic leads rapidly.
+              </p>
+              <ul class="list-disc pl-5 space-y-1.5 text-gray-600 dark:text-gray-400 text-sm marker:text-accent-blue/70">
+                <li class="leading-relaxed">Architected a 4-digit OTP phone-verification module in dynamic lead captures, ensuring reliable, verified lead ingestion.</li>
+                <li class="leading-relaxed">Built out the static Press center listing and details pages, using a unified `press-data.ts` content routing structure.</li>
+                <li class="leading-relaxed">Optimized critical images for high Core Web Vitals (from ~24MB original files down to ~397KB compressed WebP assets) with Sharp.</li>
               </ul>
             </div>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Next.js 14</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">TypeScript</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">Framer Motion</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">reCAPTCHA v3</span>
-              <span class="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/50 transition-colors">SEO</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">Next.js 14</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">React 18</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">TypeScript</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">reCAPTCHA v3</span>
+              <span class="px-3 py-1.5 text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full">SEO Specs</span>
             </div>
           </div>
         </div>
@@ -322,126 +623,241 @@
     </div>
   </section>
 
+  <!-- Featured AI Project & Learning Lab Section -->
+  <section id="ai-lab" class="py-24 px-6 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center font-display text-gray-900 dark:text-white">AI Engineering Lab</h2>
+      <p class="text-xl text-gray-500 dark:text-gray-400 text-center max-w-2xl mx-auto mb-16">
+        Highlighting my current real-world prototype and upcoming structural machine learning designs.
+      </p>
 
-  <!-- AI Lab Section -->
-  <section id="ai-lab" class="py-24 px-6 relative">
-    <div class="max-w-5xl mx-auto text-center fade-in">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">AI Engineering Lab</h2>
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-16">Currently upskilling in LLM integration, agentic workflows, and prompt engineering.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-        <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
-          <h3 class="text-2xl font-semibold text-white mb-3">Agentic Trip Assistant</h3>
-          <div class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-mono rounded-full mb-4">Upcoming</div>
-          <p class="text-gray-400">An autonomous agent designed to plan, book, and manage luxury itineraries.</p>
+      <!-- Best Featured Card (My Real AI Studio App) -->
+      <div class="bg-gradient-to-br from-accent-purple/20 via-transparent to-accent-blue/20 dark:from-accent-purple/10 dark:to-accent-blue/10 border border-accent-blue/30 dark:border-white/10 rounded-3xl p-8 sm:p-12 mb-16 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 px-4 py-2 bg-accent-blue/20 text-accent-blue font-mono text-xs rounded-bl-3xl border-l border-b border-accent-blue/30">FEATURED MODEL</div>
+        <div class="max-w-3xl">
+          <div class="inline-block px-3 py-1 bg-accent-blue/10 text-accent-blue text-xs font-mono rounded-full mb-6 border border-accent-blue/20">LIVE DEMO AVAILABLE</div>
+          <h3 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4 font-display">AI Portfolio Craft</h3>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+            A Gemini-powered interactive development portfolio architect that transforms developer resumes into highly customized, modern, single-page web experiences with automated layout engines, code rendering, and semantic search models.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="px-3 py-1 text-xs font-mono bg-bg-dark/10 dark:bg-white/5 border border-accent-blue/10 text-accent-blue rounded-full">Gemini API</span>
+            <span class="px-3 py-1 text-xs font-mono bg-bg-dark/10 dark:bg-white/5 border border-accent-blue/10 text-accent-blue rounded-full">Prompt Engineering</span>
+            <span class="px-3 py-1 text-xs font-mono bg-bg-dark/10 dark:bg-white/5 border border-accent-blue/10 text-accent-blue rounded-full">HTML5</span>
+            <span class="px-3 py-1 text-xs font-mono bg-bg-dark/10 dark:bg-white/5 border border-accent-blue/10 text-accent-blue rounded-full">Tailwind CSS</span>
+            <span class="px-3 py-1 text-xs font-mono bg-bg-dark/10 dark:bg-white/5 border border-accent-blue/10 text-accent-blue rounded-full">JS Dynamic UI</span>
+          </div>
+          <a href="https://ais-pre-bccx6uw4zzi2wemkkoyhwb-533067739097.asia-southeast1.run.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-accent-blue text-bg-dark font-bold rounded-full hover:bg-accent-blue/90 transform hover:scale-105 active:scale-95 transition-all">
+            Launch Live Demo
+          </a>
         </div>
-        <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
-          <h3 class="text-2xl font-semibold text-white mb-3">Internal OI Copilot</h3>
-          <div class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-mono rounded-full mb-4">Upcoming</div>
-          <p class="text-gray-400">A context-aware LLM assistant integrated into the Operations Interface.</p>
+      </div>
+
+      <!-- Upcoming Learning Lab Cards -->
+      <h3 class="text-xl font-mono text-gray-400 uppercase tracking-widest text-center mb-10">// TRAINING & LEARNING LAB (UPCOMING FROM IIT INITIATIVES)</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-3xl bg-white/40 dark:bg-white/5 border border-gray-200 dark:border-white/5 relative">
+          <div class="absolute top-4 right-4 text-[10px] font-mono text-gray-400">UPCOMING_01</div>
+          <h4 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Image Classification CNN</h4>
+          <span class="inline-block px-2 py-0.5 bg-accent-purple/10 text-accent-purple text-xs font-mono rounded mb-4 border border-accent-purple/20">Computer Vision</span>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Constructing complete convolutional layers with pool gates and dropout structures to optimize classification models on spatial tensors.
+          </p>
+        </div>
+        <div class="p-8 rounded-3xl bg-white/40 dark:bg-white/5 border border-gray-200 dark:border-white/5 relative">
+          <div class="absolute top-4 right-4 text-[10px] font-mono text-gray-400">UPCOMING_02</div>
+          <h4 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">NLP Text Classifier</h4>
+          <span class="inline-block px-2 py-0.5 bg-accent-blue/10 text-accent-blue text-xs font-mono rounded mb-4 border border-accent-blue/20">Natural Language</span>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Structuring transformer self-attention sequences and positional encodes to catalog and process semantic sentence weights.
+          </p>
+        </div>
+        <div class="p-8 rounded-3xl bg-white/40 dark:bg-white/5 border border-gray-200 dark:border-white/5 relative">
+          <div class="absolute top-4 right-4 text-[10px] font-mono text-gray-400">UPCOMING_03</div>
+          <h4 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">ML-Ops Serving Node</h4>
+          <span class="inline-block px-2 py-0.5 bg-accent-teal/10 text-accent-teal text-xs font-mono rounded mb-4 border border-accent-teal/20">Deployment</span>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Containerizing microservices inside server pools to expose model ports cleanly across REST triggers with strict validation layers.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Tech Stack & Certifications Section -->
-  <section class="py-24 px-6 relative bg-white/[0.02]">
+  <!-- Technical Stack Section -->
+  <section id="stack" class="py-16 sm:py-24 px-4 sm:px-8 relative bg-gray-50 dark:bg-white/[0.01] z-10">
     <div class="max-w-7xl mx-auto fade-in">
-      <h2 class="text-3xl md:text-4xl font-bold mb-16 flex items-center gap-4">
-        <span class="w-8 h-[2px] bg-accent"></span> The Stack & Certifications
+      <h2 class="text-3xl md:text-4xl font-bold mb-16 flex items-center gap-4 font-display">
+        <span class="w-8 h-[2px] bg-accent-blue"></span> Active Engineering Stack
       </h2>
       
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-        <!-- Tech Stack Categories -->
-        <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          <!-- Frontend -->
-          <div class="bg-white/5 border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
-            <h3 class="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-              Frontend & UI
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">React.js (18)</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Next.js (14)</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">TypeScript</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">JavaScript</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Tailwind CSS</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Material-UI</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Recoil</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Radix UI</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Framer Motion</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">HTML5 / SCSS</span>
-            </div>
-          </div>
-
-          <!-- Backend & Database -->
-          <div class="bg-white/5 border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
-            <h3 class="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-              Backend & Database
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Node.js</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Express.js</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Java</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Spring Boot</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">MySQL</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">RESTful APIs</span>
-            </div>
-          </div>
-
-          <!-- Tools, Cloud & Architecture -->
-          <div class="md:col-span-2 bg-white/5 border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
-            <h3 class="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-              Tools, Cloud & AI
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">AWS S3</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Git & GitHub Actions (CI/CD)</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Vite & Razzle (SSR)</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Cursor</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Claude</span>
-              <span class="px-3 py-1.5 text-sm font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">Antigravity</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Certifications -->
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
-          <h3 class="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A5.99 5.99 0 0 1 12 2a5.99 5.99 0 0 1 10 6.35z"></path><path d="M12 2v20"></path></svg>
-            Certifications & Training
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Frontend -->
+        <div class="bg-white/40 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-3xl p-8 hover:border-accent-blue/30 transition-colors">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent-blue"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            Frontend & UI Frameworks
           </h3>
-          <div class="space-y-8">
-            <div class="relative pl-6 border-l border-white/10">
-              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)]"></div>
-              <h4 class="text-white font-medium text-lg">Java Data Structures & Algorithms + LEETCODE Exercises</h4>
-              <p class="text-sm text-gray-400 mt-1">Udemy</p>
-            </div>
-            
-            <div class="relative pl-6 border-l border-white/10">
-              <div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)]"></div>
-              <h4 class="text-white font-medium text-lg">Java and Spring Framework for Beginners with Spring Boot</h4>
-              <p class="text-sm text-gray-400 mt-1">Udemy</p>
-            </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">React 18</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Next.js 14</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">TypeScript</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Tailwind CSS</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Material-UI</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">CSS Modules</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Framer Motion</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Recoil</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">HTML5 / SCSS</span>
           </div>
         </div>
 
+        <!-- Backend -->
+        <div class="bg-white/40 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-3xl p-8 hover:border-accent-purple/30 transition-colors">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent-purple"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            Backend & Systems
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Node.js</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Express.js</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Ruby on Rails</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Spring Boot</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Java Core</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full flex items-center gap-1">REST API <span class="text-[10px] font-mono text-accent-purple">[V2 Specs]</span></span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">PostgreSQL</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">MySQL</span>
+          </div>
+        </div>
+
+        <!-- Devops & Pipelines -->
+        <div class="bg-white/40 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-3xl p-8 hover:border-accent-teal/30 transition-colors">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent-teal"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            Deployment & Tooling
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Git / GitHub Actions</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">AWS S3 / static CDN</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Vite / Razzle SSR</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Gulp 5 Static Pipelines</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">Webpack / Sharp</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full">ESLint 9 / Prettier</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-300 bg-white/20 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-full flex items-center gap-1">CleverTap <span class="text-[10px] font-mono text-accent-teal">[UTM Metrics]</span></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer id="contact" class="py-20 px-6 border-t border-white/10 relative">
+  <!-- Contact & Footer Section -->
+  <footer id="contact" class="py-24 px-6 border-t border-gray-200 dark:border-white/5 relative z-10">
     <div class="max-w-5xl mx-auto text-center fade-in">
-      <h2 class="text-3xl font-bold mb-6">Let's Connect</h2>
-      <p class="text-gray-400 mb-8">damini1998shrawan29@gmail.com | Mumbai, Maharashtra, 400031 | 8959200891</p>
-      <div class="text-gray-500 text-sm">Damini Shrawan © 2026. All rights reserved.</div>
+      <h2 class="text-4xl font-bold mb-6 font-display text-gray-900 dark:text-white">Let's Connect</h2>
+      <p class="text-gray-600 dark:text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+        Feel free to reach out for production software engineering opportunities or academic alignments in machine learning.
+      </p>
+      
+      <!-- Contact Details -->
+      <div class="flex flex-col gap-4 text-sm font-mono text-gray-600 dark:text-gray-300 mb-12 select-all">
+        <a href="mailto:damini1998shrawan29@gmail.com" class="hover:text-accent-blue transition-colors">
+          Email: damini1998shrawan29@gmail.com
+        </a>
+        <a href="tel:8959200891" class="hover:text-accent-blue transition-colors">
+          Phone: +91 8959200891
+        </a>
+        <div>
+          Location: Mumbai, Maharashtra, 400031
+        </div>
+      </div>
+
+      <div class="text-xs text-gray-500 font-mono">
+        Damini Shrawan &copy; 2026. All rights reserved. Designed & built for scale.
+      </div>
     </div>
   </footer>
 
+  <!-- Core JavaScript Toggle & Scroll Observers -->
   <script>
+    // Theme Toggle Logic
+    const toggleBtn = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+
+    function setTheme(isDark) {
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Initial check
+    const savedTheme = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+      setTheme(true);
+    } else {
+      setTheme(false);
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      setTheme(!htmlEl.classList.contains('dark'));
+    });
+
+    // Mobile Menu Toggle Logic
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function toggleMobileMenu() {
+      const isOpen = !mobileMenu.classList.contains('translate-x-full');
+      if (isOpen) {
+        mobileMenu.classList.add('translate-x-full');
+        hamburgerIcon.classList.remove('hidden');
+        hamburgerIcon.classList.add('block');
+        closeIcon.classList.remove('block');
+        closeIcon.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('translate-x-full');
+        hamburgerIcon.classList.remove('block');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        closeIcon.classList.add('block');
+      }
+    }
+
+    if (mobileMenuToggle && mobileMenu) {
+      mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+
+      // Close mobile menu on clicking any navigation link
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('translate-x-full');
+          if (hamburgerIcon && closeIcon) {
+            hamburgerIcon.classList.remove('hidden');
+            hamburgerIcon.classList.add('block');
+            closeIcon.classList.remove('block');
+            closeIcon.classList.add('hidden');
+          }
+        });
+      });
+
+      // Close mobile menu on clicking outside of the menu
+      document.addEventListener('click', (event) => {
+        const isClickInsideMenu = mobileMenu.contains(event.target);
+        const isClickMenuButton = mobileMenuToggle.contains(event.target);
+        const isMenuOpen = !mobileMenu.classList.contains('translate-x-full');
+
+        if (isMenuOpen && !isClickInsideMenu && !isClickMenuButton) {
+          toggleMobileMenu();
+        }
+      });
+    }
+
+    // Scroll Observer for Fade-In Effects
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -449,9 +865,8 @@
         }
       });
     }, { threshold: 0.1 });
-    
+
     document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
   </script>
 </body>
 </html>
-

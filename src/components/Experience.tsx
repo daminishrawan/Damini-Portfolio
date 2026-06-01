@@ -5,33 +5,39 @@ const experiences = [
   {
     id: 1,
     date: "Jul 2024 — Present",
-    company: "Isprava",
+    company: "Isprava / Lohono Stays",
     role: "Software Developer",
-    overview: "Leading end-to-end full-stack delivery of luxury hospitality ecosystems. Specializing in architecting scalable React/TypeScript systems, designing robust API integrations, and driving technical parity between business verticals.",
+    overview: "Leading end-to-end full-stack development of luxury hospitality ecosystems. Specialing in architecting scalable React/TypeScript systems, robust API integrations, and driving technical parity across properties.",
+    isCurrent: true,
     highlights: [
-      "Engineered the Lohono property platform with multi-config checkout, dynamic pricing, and a WhatsApp/SMS integrated referral programme.",
-      "Spearheaded the Trip Planner guest app, managing complex state machines for session-based reservations, meal planning, and Web Check-in.",
-      "Architected internal operations (LMS/OI) including Food Ordering, KOT flows, and complex financial logic for TDS/Commission and Client Ledgers.",
-      "Developed marketing sites (Solene & Chapter) focusing on SEO optimization, multi-step validation forms, and DRY architecture.",
-      "Shifted legacy code to modular, component-based structures (React 18, Vite, Recoil) and established repo-wide CI/CD stability patterns."
+      "Core frontend engineer on lohono.com, owning the full booking funnel (discovery, listing, detail, checkout, Razorpay) and shipping greenfield surfaces from scratch – Property Cluster (multi-villa) with full-stack Express review/recommendation APIs, Referral Programme, Harmony Weddings, and Schedule Callback – across 100 commits and PRs over 21 months.",
+      "Built the Lohono Trip Planner guest app from scratch (React 18, TypeScript, Vite 6, Tailwind CSS, Recoil, Radix/Shadcn UI) with 11+ custom REST API hooks for meal ordering and a multi-guest Web Check-in KYC flow; refactored a 2,300-line monolith into hook-driven modules, removing 1,100+ lines across 81 files – 9 PRs and 25+ tickets in 2.5 months.",
+      "Delivered the Isprava LMS internal CRM across 5 product verticals (React 18, MUI, JsSIP/WebRTC, Sentry) – a 15+ component villa food-ordering system with KOT printing, Client Ledger with preview-gated downloads, Delivery Tracker, and the Rental Trip Details revamp; centralized a shared currency utility and added Jest/RTL coverage.",
+      "Sole frontend owner of the Solene membership platform – multi-step application form with complex validation, preview mode, and cross-page state retention; rebuilt the marketing site, shipped JSON-driven legal pages, and configured SEO sitemap, AWS S3/CloudFront, GitHub Actions CI/CD, and n8n webhook submissions."
     ]
   },
   {
     id: 2,
     date: "Jan 2024 — Jul 2024",
-    company: "Isprava",
+    company: "Isprava / Lohono Stays",
     role: "Frontend Developer Intern",
     overview: "Drove end-to-end delivery for luxury hospitality platforms, focusing on React 18/TypeScript architecture, API integration, and SEO.",
     highlights: [
-      "Built core consumer features for the Lohono website including checkout, pricing, and referral systems.",
-      "Developed the Trip Planner guest app for meal planning and Web Check-in.",
-      "Automated internal operations in Isprava LMS/OI (food ordering, KOT, financial logic).",
-      "Maintained and optimized Solene and Chapter marketing sites."
+      "Engineered an appointment scheduling system (date picker, time-slot carousel, rescheduling, edge-case handling) and a scroll-aware calendar positioning hook that resolved recurring date-picker defects across listing, detail, and collection pages.",
+      "Built a multi-step lead capture form (Next.js 14) with OTP verification, Google reCAPTCHA v3, UTM tracking, and GTM event instrumentation – an end-to-end form pipeline from UI through CRM lead submission."
     ]
   }
 ];
 
 const education = [
+  {
+    id: 0,
+    date: "16 Aug 2026 — Aug 2028 (Expected)",
+    institution: "Indian Institute of Technology, Jodhpur (IIT Jodhpur)",
+    degree: "Executive M.Tech in Artificial Intelligence",
+    gpa: "Upcoming",
+    description: "Specialized advanced program focusing on Machine Learning, Deep Learning, Artificial Intelligence, Optimization for Data Science, Advanced Data Structures & Algorithms, ML-Ops & DL-Ops, NLP, Computer Vision, and Advanced AI & Autonomous Systems."
+  },
   {
     id: 1,
     date: "Mar 2023 — Aug 2023",
@@ -84,35 +90,55 @@ export default function Experience() {
               <h3 className="text-2xl font-semibold">Experience</h3>
             </div>
             <div className="relative border-l border-white/10 ml-4 md:ml-0">
-              {experiences.map((exp, index) => (
-                <motion.div 
-                  key={exp.id}
-                  className="mb-12 relative pl-8 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                >
-                  <div className="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)] group-hover:scale-150 transition-transform duration-300 z-10"></div>
-                  
-                  <div className="mb-2">
-                    <div className="text-accent font-mono text-sm mb-1">{exp.date}</div>
-                    <div className="text-xl font-semibold text-white">{exp.role}</div>
-                    <div className="text-gray-400 font-medium">{exp.company}</div>
-                  </div>
+              {experiences.map((exp, index) => {
+                const isCurrent = 'isCurrent' in exp && exp.isCurrent;
+                return (
+                  <motion.div 
+                    key={exp.id}
+                    className="mb-12 relative pl-8 group"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                  >
+                    <div className={`absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full transition-all duration-300 z-10 ${
+                      isCurrent 
+                        ? 'bg-accent shadow-[0_0_15px_rgba(0,229,255,1)] ring-4 ring-accent/20 scale-125' 
+                        : 'bg-accent shadow-[0_0_10px_rgba(0,229,255,0.8)] group-hover:scale-150'
+                    }`}></div>
+                    
+                    <div className="mb-2">
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <div className="text-accent font-mono text-sm">{exp.date}</div>
+                        {isCurrent && (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold bg-accent/10 text-accent border border-accent/20 tracking-wider uppercase font-mono animate-pulse">
+                            Active Highlighted Role
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-xl font-semibold text-white">{exp.role}</div>
+                      <div className="text-gray-400 font-medium">{exp.company}</div>
+                    </div>
 
-                  <div className="bg-white/5 border border-white/5 rounded-2xl p-6 hover:bg-white/10 hover:border-white/10 transition-colors duration-300 mt-4">
-                    <p className="text-gray-200 leading-relaxed text-sm mb-4">
-                      {exp.overview}
-                    </p>
-                    <ul className="list-disc pl-4 space-y-2 marker:text-accent/70 text-gray-400 text-sm">
-                      {exp.highlights.map((highlight, i) => (
-                        <li key={i} className="leading-relaxed">{highlight}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              ))}
+                    <div className={`p-6 rounded-2xl transition-colors duration-300 mt-4 border ${
+                      isCurrent 
+                        ? 'bg-accent/[0.04] border-accent/30 shadow-[0_0_30px_rgba(0,229,255,0.06)] hover:bg-accent/[0.07] hover:border-accent/50' 
+                        : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/10'
+                    }`}>
+                      <p className="text-gray-200 leading-relaxed text-sm mb-4">
+                        {exp.overview}
+                      </p>
+                      <ul className={`list-disc pl-4 space-y-2 text-sm ${
+                        isCurrent ? 'marker:text-accent text-gray-200' : 'marker:text-accent/70 text-gray-400'
+                      }`}>
+                        {exp.highlights.map((highlight, i) => (
+                          <li key={i} className="leading-relaxed">{highlight}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
 

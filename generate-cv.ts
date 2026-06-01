@@ -3,21 +3,35 @@ import fs from 'fs';
 import path from 'path';
 
 // Generate a professional 1-page PDF cv matching the user's uploaded CV design exactly
-const destPath = path.join(process.cwd(), 'assets', 'Damini_Shrawan_CV.pdf');
+// Generate professional 1-page PDF cv to both public/assets and assets so it is available in dev and prod builds
+const publicDestPath = path.join(process.cwd(), 'public', 'assets', 'Damini_Shrawan_CV.pdf');
+const assetsDestPath = path.join(process.cwd(), 'assets', 'Damini_Shrawan_CV.pdf');
 
-// Create directory if it doesn't exist
-const dir = path.dirname(destPath);
-if (!fs.existsSync(dir)) {
-  fs.mkdirSync(dir, { recursive: true });
-}
+// Ensure directories exist
+[publicDestPath, assetsDestPath].forEach(destPath => {
+  const dir = path.dirname(destPath);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+});
 
 const doc = new PDFDocument({
   size: 'LETTER',
   margins: { top: 30, bottom: 30, left: 35, right: 35 },
 });
 
-const stream = fs.createWriteStream(destPath);
+// Write to public folder
+const stream = fs.createWriteStream(publicDestPath);
 doc.pipe(stream);
+
+// Also pipe/write to assets folder as a copy
+const backupStream = fs.createWriteStream(assetsDestPath);
+doc.on('data', (chunk) => {
+  backupStream.write(chunk);
+});
+doc.on('end', () => {
+  backupStream.end();
+});
 
 const contentWidth = 612 - 35 - 35; // 542
 const bulletIndent = 12;
@@ -215,5 +229,5 @@ addBullet('Java and Spring Framework for Beginners with Spring Boot – Udemy');
 doc.end();
 
 stream.on('finish', () => {
-  console.log('Successfully wrote professional 1-page CV PDF to assets/Damini_Shrawan_CV.pdf!');
+  console.log('Successfully wrote professional 1-page CV PDF to public/assets and assets folders!');
 });

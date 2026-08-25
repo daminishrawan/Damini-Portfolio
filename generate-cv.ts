@@ -2,7 +2,9 @@ import PDFDocument from 'pdfkit';
 import fs from 'fs';
 import path from 'path';
 
-// Generate professional 1-page PDF cv to public/assets
+// Generate a professional 1-page PDF cv matching the user's uploaded CV design exactly
+
+// Generate professional 1-page PDF cv to both public/assets and assets so it is available in dev and prod builds
 const publicDestPath = path.join(process.cwd(), 'public', 'assets', 'Damini_Shrawan_CV.pdf');
 const assetsDestPath = path.join(process.cwd(), 'assets', 'Damini_Shrawan_CV.pdf');
 
@@ -16,15 +18,17 @@ const assetsDestPath = path.join(process.cwd(), 'assets', 'Damini_Shrawan_CV.pdf
 
 const doc = new PDFDocument({
   size: 'LETTER',
-  margins: { top: 28, bottom: 28, left: 36, right: 36 },
+  margins: { top: 25, bottom: 23, left: 28.8, right: 28.8 },
 });
 
 // Write to public folder
 const stream = fs.createWriteStream(publicDestPath);
 doc.pipe(stream);
 
-const contentWidth = 612 - 36 - 36; // 540
-const bulletIndent = 12;
+// The actual copying to assetsDestPath will happen on finish to prevent stream corruption
+
+const contentWidth = 612 - 28.8 - 28.8; // 554.4
+const bulletIndent = 10;
 
 // Custom Helper: Draw a bullet point
 function addBullet(bulletText: string) {
@@ -33,19 +37,15 @@ function addBullet(bulletText: string) {
   
   // Render the bullet symbol on left
   doc.font('Helvetica')
-     .fontSize(9.5)
-     .lineGap(1.2)
-     .fillColor('black')
-     .text(bulletSymbol, 36 + 12, startY, { width: bulletIndent });
+     .fontSize(7.5)
+     .lineGap(1.0)
+     .fillColor('#111111')
+     .text(bulletSymbol, 28.8, startY, { width: bulletIndent });
 
   // Render the bullet text adjacent to symbol
-  doc.font('Times-Roman')
-     .fontSize(9.5)
-     .fillColor('black')
-     .text(bulletText, 36 + 12 + bulletIndent, startY, {
-    width: contentWidth - 12 - bulletIndent,
-    align: 'justify',
-    lineGap: 1.2
+  doc.text(bulletText, 28.8 + bulletIndent, startY, {
+    width: contentWidth - bulletIndent,
+    align: 'left',
   });
   
   doc.y += 1.5; // Slight spacing between bullets
@@ -54,15 +54,15 @@ function addBullet(bulletText: string) {
 // Custom Helper: Draw a Section Header
 function sectionHeader(title: string) {
   doc.y += 4;
-  doc.font('Times-Bold')
-     .fontSize(12)
-     .fillColor('black')
-     .text(title, 36, doc.y);
+  doc.font('Helvetica-Bold')
+     .fontSize(8.5)
+     .fillColor('#003366') // LaTeX darkblue
+     .text(title.toUpperCase(), 28.8, doc.y, { characterSpacing: 0.5 });
   
   const lineY = doc.y + 1;
-  doc.moveTo(36, lineY)
-     .lineTo(612 - 36, lineY)
-     .strokeColor('black')
+  doc.moveTo(28.8, lineY)
+     .lineTo(612 - 28.8, lineY)
+     .strokeColor('#003366') // LaTeX darkblue rule line
      .lineWidth(0.5)
      .stroke();
   
@@ -70,135 +70,158 @@ function sectionHeader(title: string) {
 }
 
 // Header
-doc.font('Times-Roman')
-   .fontSize(24)
-   .fillColor('black')
+doc.font('Helvetica-Bold')
+   .fontSize(16)
+   .fillColor('#000000')
    .text('Damini Shrawan', { align: 'center' });
 
-doc.y += 2;
+doc.y += 1.5;
 
-doc.font('Times-Roman')
-   .fontSize(9.5)
-   .fillColor('black')
-   .text('8959200891 | damini1998shrawan29@gmail.com | linkedin.com/in/daminishrawan |', { align: 'center' });
-doc.text('daminishrawan.github.io/DaminiPortfolio', { align: 'center' });
+doc.font('Helvetica')
+   .fontSize(7.8)
+   .fillColor('#555555')
+   .text('Mumbai, India | +918959200891 | damini1998shrawan29@gmail.com | linkedin.com/in/damini-shrawan', { align: 'center' });
 
-doc.y += 3;
+doc.y += 4;
 
 // 1. Professional Summary
-sectionHeader('Summary');
-doc.font('Times-Roman')
-   .fontSize(9.5)
-   .fillColor('black')
-   .lineGap(1.2)
+sectionHeader('Professional Summary');
+doc.font('Helvetica')
+   .fontSize(7.5)
+   .lineGap(1.1)
+   .fillColor('#222222')
    .text(
-     'Full-stack software engineer with 2.5+ years shipping production features across React 18, TypeScript, Next.js, Ruby on Rails, and PostgreSQL. Experienced building RESTful APIs, owning features end-to-end from requirements through deployment, and integrating third-party services in fast-moving product environments.',
-     36, doc.y, { width: contentWidth, align: 'justify' }
+     'Full Stack Developer with 2.5+ years of production experience building and shipping scalable MERN and Ruby on Rails applications, REST APIs, and real-time data systems across high-traffic consumer products and internal CRM/operations platforms. Track record of independently owning greenfield features end-to-end and refactoring large React codebases. Starting an Executive M.Tech in Artificial Intelligence at IIT Jodhpur (Aug 2026) to build expertise in Machine Learning, Deep Learning, NLP, Computer Vision, and MLOps, with the goal of transitioning into AI/ML engineering.',
+     28.8, doc.y, { width: contentWidth, align: 'justify' }
    );
 
 // 2. Technical Skills
 sectionHeader('Technical Skills');
 
 const skillsData = [
-  { label: 'Languages', value: 'JavaScript, TypeScript, Ruby, HTML/CSS, SQL' },
-  { label: 'Frontend', value: 'React 18, Next.js, Recoil, Context API, Radix UI, Shadcn' },
-  { label: 'Backend', value: 'Node.js, Express, Ruby on Rails 8, RESTful API design, Pundit (RBAC)' },
-  { label: 'Databases', value: 'PostgreSQL, database migrations, relational data modeling' },
-  { label: 'Tools & Practices', value: 'Git, GitHub Actions (CI/CD), AWS S3/CloudFront, Agile/Scrum, third-party API integration (Razorpay, Google reCAPTCHA v3, OTP verification)' }
+  { label: 'Languages', value: 'TypeScript, JavaScript (ES6+), Python, Ruby, HTML5, SCSS/CSS Modules' },
+  { label: 'Frontend', value: 'React 18, Next.js 14, Redux, Recoil, Zustand, Tailwind CSS, Radix UI / Shadcn UI, MUI, Formik/Yup, Vite' },
+  { label: 'Backend and Data', value: 'Node.js, Express.js, Ruby on Rails 8, PostgreSQL, REST API Design, Pundit RBAC' },
+  { label: 'Cloud, DevOps and Observability', value: 'AWS S3/CloudFront, GitHub Actions (CI/CD), Docker, Sentry, GTM/Clevertap, n8n' }
 ];
 
 skillsData.forEach(skill => {
-  doc.font('Times-Bold')
-     .fontSize(9.5)
-     .fillColor('black')
-     .text(`${skill.label}: `, 36, doc.y, { continued: true })
-     .font('Times-Roman')
-     .fillColor('black')
+  doc.font('Helvetica-Bold')
+     .fontSize(7.5)
+     .fillColor('#111111')
+     .text(`${skill.label}: `, 28.8, doc.y, { continued: true })
+     .font('Helvetica')
+     .fillColor('#333333')
      .text(skill.value, { width: contentWidth });
-  doc.y += 2;
+  doc.y += 2.0;
 });
 
 // 3. Professional Experience
-sectionHeader('Experience');
+sectionHeader('Professional Experience');
 
 // Job 1
 let yStart = doc.y;
-doc.font('Times-Bold').fontSize(10.5).fillColor('black').text('Isprava / Lohono Stays', 36, yStart, { width: 300 });
-doc.font('Times-Roman').fontSize(10).fillColor('black').text('Mumbai, India', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Helvetica-Bold').fontSize(8.5).fillColor('#000000').text('Isprava / Lohono Stays', 28.8, yStart, { width: 300 });
+doc.font('Helvetica-Bold').fontSize(8).fillColor('#000000').text('Jul 2024 – Present', 28.8, yStart, { align: 'right', width: contentWidth });
 let yNext = doc.y;
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('Software Developer', 36, yNext, { width: 300 });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('July 2024 – Present', 36, yNext, { align: 'right', width: contentWidth });
+doc.font('Helvetica-Oblique').fontSize(7.5).fillColor('#555555').text('Software Developer', 28.8, yNext, { width: 300 });
+doc.font('Helvetica-Oblique').fontSize(7.5).fillColor('#555555').text('Mumbai, India', 28.8, yNext, { align: 'right', width: contentWidth });
 doc.y += 2;
 
-addBullet('Delivered full-stack features end-to-end across 6 production products, from requirements gathering through deployment, serving thousands of premium travellers.');
-addBullet('Architected the Lohono Trip Planner guest application from scratch using React 18, TypeScript, and Recoil, building 11+ custom RESTful API hooks to replace 2,149 lines of mock data.');
-addBullet('Refactored a 2,300-line monolithic codebase into modular hooks, removing 1,100+ lines of dead code across 81 files to reduce technical debt and improve maintainability.');
-addBullet('Built RESTful backend APIs from the ground up in Ruby on Rails 8 and PostgreSQL, including full CRUD service layers, Pundit role-based access control, and database migrations.');
-addBullet('Optimized web performance by implementing a WebP image pipeline, reducing hero-image payloads by 98% (from ~24MB to under 400KB).');
-addBullet('Integrated third-party services including Razorpay payments, Google reCAPTCHA v3, and OTP verification; implemented CI/CD pipelines via GitHub Actions for automated deployment to AWS S3/CloudFront.');
+addBullet('Core frontend engineer on lohono.com, owning the full booking funnel (discovery, listing, detail, checkout, Razorpay) and shipping greenfield surfaces from scratch – Property Cluster (multi-villa) with full-stack Express review/recommendation APIs, Referral Programme, Harmony Weddings, and Schedule Callback – across 100 commits and PRs over 21 months.');
+addBullet('Built the Lohono Trip Planner guest app from scratch (React 18, TypeScript, Vite 6, Tailwind CSS, Recoil, Radix/Shadcn UI) with 11+ custom REST API hooks for meal ordering and a multi-guest Web Check-in KYC flow; refactored a 2,300-line monolith into hook-driven modules, removing 1,100+ lines across 81 files – 9 PRs and 25+ tickets in 2.5 months.');
+addBullet('Delivered the Isprava LMS internal CRM across 5 product verticals (React 18, MUI, JsSIP/WebRTC, Sentry) – a 15+ component villa food-ordering system with KOT printing, Client Ledger with preview-gated downloads, Delivery Tracker, and the Rental Trip Details revamp; centralized a shared currency utility and added Jest/RTL coverage.');
+addBullet('Sole frontend owner of the Solene membership platform – multi-step application form with complex validation, preview mode, and cross-page state retention; rebuilt the marketing site, shipped JSON-driven legal pages, and configured SEO sitemap, AWS S3/CloudFront, GitHub Actions CI/CD, and n8n webhook submissions.');
 
 doc.y += 2;
 
 // Job 2
 yStart = doc.y;
-doc.font('Times-Bold').fontSize(10.5).fillColor('black').text('Isprava / Lohono Stays', 36, yStart, { width: 300 });
-doc.font('Times-Roman').fontSize(10).fillColor('black').text('Mumbai, India', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Helvetica-Bold').fontSize(8.5).fillColor('#000000').text('Isprava / Lohono Stays', 28.8, yStart, { width: 300 });
+doc.font('Helvetica-Bold').fontSize(8).fillColor('#000000').text('Jan 2024 – Jul 2024', 28.8, yStart, { align: 'right', width: contentWidth });
 yNext = doc.y;
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('Frontend Developer', 36, yNext, { width: 300 });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('January 2024 – July 2024', 36, yNext, { align: 'right', width: contentWidth });
+doc.font('Helvetica-Oblique').fontSize(7.5).fillColor('#555555').text('Front-end Developer Intern', 28.8, yNext, { width: 300 });
+doc.font('Helvetica-Oblique').fontSize(7.5).fillColor('#555555').text('Mumbai, India', 28.8, yNext, { align: 'right', width: contentWidth });
 doc.y += 2;
 
-addBullet('Built core consumer-facing features for Lohono.com in React 18 and TypeScript, including checkout, dynamic pricing, and referral systems.');
-addBullet('Engineered an appointment scheduling system with date-picker, time-slot carousel, and rescheduling logic, handling edge cases across booking states.');
-addBullet('Delivered a multi-step lead-capture form in Next.js with OTP verification, Google reCAPTCHA v3, and UTM/GTM tracking integration.');
+addBullet('Engineered an appointment scheduling system (date picker, time-slot carousel, rescheduling, edge-case handling) and a scroll-aware calendar positioning hook that resolved recurring date-picker defects across listing, detail, and collection pages.');
+addBullet('Built a multi-step lead capture form (Next.js 14) with OTP verification, Google reCAPTCHA v3, UTM tracking, and GTM event instrumentation – an end-to-end form pipeline from UI through CRM lead submission.');
 
 // 4. Projects
 sectionHeader('Projects');
 
 // Project 1
 yStart = doc.y;
-doc.font('Times-Bold').fontSize(9.5).fillColor('black').text('Lohono Trip Planner', 36, yStart, { continued: true });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text(' | React 18, TypeScript, Vite, Recoil, REST APIs');
-doc.font('Times-Roman').fontSize(9.5).fillColor('black').text('2024', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Helvetica-Bold').fontSize(8).fillColor('#000000').text('AI / ML – Planned Coursework Projects (IIT Jodhpur, from Aug 2026)', 28.8, yStart, { width: 420 });
+doc.font('Helvetica-Bold').fontSize(7.5).fillColor('#000000').text('Upcoming', 28.8, yStart, { align: 'right', width: contentWidth });
 doc.y += 1.5;
-addBullet('Designed and built a guest-facing trip-planning application from scratch, including meal-plan ordering, guest-count/time-slot state machines, and a document-upload web check-in flow.');
-addBullet('Built 11+ custom REST API hooks to power dynamic, real-time guest data across the application.');
+addBullet('Small hands-on projects to be built through the program: an image-classification CNN (Computer Vision), a text-classification / sentiment-analysis model (NLP), and a containerized ML-Ops deployment that serves a trained model over a REST API.');
 
-doc.y += 1.5;
+doc.y += 1.0;
 
 // Project 2
 yStart = doc.y;
-doc.font('Times-Bold').fontSize(9.5).fillColor('black').text('Solene & Chapter Marketing Sites', 36, yStart, { continued: true });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text(' | Next.js, GitHub Actions, AWS S3/CloudFront');
-doc.font('Times-Roman').fontSize(9.5).fillColor('black').text('2024', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Helvetica-Bold').fontSize(8).fillColor('#000000').text('Isprava API – Backend REST Services and RBAC (Ruby on Rails 8, PostgreSQL)', 28.8, yStart, { width: 420 });
+doc.font('Helvetica-Bold').fontSize(7.5).fillColor('#000000').text('2024 – Present', 28.8, yStart, { align: 'right', width: contentWidth });
 doc.y += 1.5;
-addBullet('Owned two marketing sites end-to-end, building multi-step validation forms and implementing SEO best practices; set up CI/CD pipelines via GitHub Actions for automated deployment.');
+addBullet('Architected the Homeowner Approvals platform from scratch (19 files, 615 lines in a single delivery) – V2 REST controllers, property/opportunity-scoped service objects, approve/reject workflows, Pundit RBAC, ActiveAdmin, decorators, and ACL/category migrations; built phased GRM checklist APIs with admin-gated uncheck and audit logic.');
+
+doc.y += 1.0;
+
+// Project 3
+yStart = doc.y;
+doc.font('Helvetica-Bold').fontSize(8).fillColor('#000000').text('The Chapter – Marketing Platform (Next.js 14 Static Export, React 18, TypeScript)', 28.8, yStart, { width: 420 });
+doc.font('Helvetica-Bold').fontSize(7.5).fillColor('#000000').text('2024 – Present', 28.8, yStart, { align: 'right', width: contentWidth });
+doc.y += 1.5;
+addBullet('Built campaign landing pages and a reusable lead-capture form system with a custom 4-digit OTP phone-verification module wired to REST lead APIs and GTM conversion events; shipped a dynamic slug-routed Press Center and drove a WebP asset pipeline that cut hero frames from roughly 24MB down to 397KB.');
 
 // 5. Education
 sectionHeader('Education');
 
 // Edu 1
 yStart = doc.y;
-doc.font('Times-Bold').fontSize(9.5).fillColor('black').text('Centre for Development of Advanced Computing (C-DAC)', 36, yStart, { width: 380 });
-doc.font('Times-Roman').fontSize(9.5).fillColor('black').text('India', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Helvetica-Bold').fontSize(8).fillColor('#000000').text('Indian Institute of Technology, Jodhpur (IIT Jodhpur)', 28.8, yStart, { width: 380 });
+doc.font('Helvetica-Bold').fontSize(7.5).fillColor('#000000').text('16 Aug 2026 – 2028 (Expected)', 28.8, yStart, { align: 'right', width: contentWidth });
 yNext = doc.y;
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('PG-DMC, Mobile Computing', 36, yNext, { width: 380 });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('March 2023 – August 2023', 36, yNext, { align: 'right', width: contentWidth });
+doc.font('Helvetica-Oblique').fontSize(7.5).fillColor('#444444').text('Executive M.Tech in Artificial Intelligence (PG Diploma to M.Tech track)', 28.8, yNext, { width: 380 });
+doc.font('Helvetica-Oblique').fontSize(7.5).fillColor('#444444').text('Online/Hybrid', 28.8, yNext, { align: 'right', width: contentWidth });
+doc.y += 1.5;
+addBullet('Upcoming coursework: Machine Learning, Deep Learning, Artificial Intelligence, Optimization for Data Science, Advanced Data Structures & Algorithms, ML-Ops & DL-Ops, NLP, Computer Vision, and Advanced AI & Autonomous Systems.');
 
-doc.y += 3;
+doc.y += 1.0;
 
 // Edu 2
 yStart = doc.y;
-doc.font('Times-Bold').fontSize(9.5).fillColor('black').text('Chhattisgarh Swami Vivekanand Technical University', 36, yStart, { width: 380 });
-doc.font('Times-Roman').fontSize(9.5).fillColor('black').text('India', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Helvetica-Bold').fontSize(8).fillColor('#000000').text('Centre for Development of Advanced Computing (C-DAC)', 28.8, yStart, { width: 380 });
+doc.font('Helvetica-Bold').fontSize(7.5).fillColor('#000000').text('Mar 2023 – Aug 2023', 28.8, yStart, { align: 'right', width: contentWidth });
 yNext = doc.y;
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('B.Tech, Electrical Engineering Technologies', 36, yNext, { width: 380 });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('June 2017 – June 2021', 36, yNext, { align: 'right', width: contentWidth });
+doc.font('Helvetica-Oblique').fontSize(7.5).fillColor('#444444').text('PG-DMC, Mobile Computing', 28.8, yNext, { width: 380 });
+doc.font('Helvetica-Oblique').fontSize(7.5).fillColor('#444444').text('Pune, India', 28.8, yNext, { align: 'right', width: contentWidth });
+
+doc.y += 2;
+
+// Edu 3
+yStart = doc.y;
+doc.font('Helvetica-Bold').fontSize(8).fillColor('#000000').text('Chhattisgarh Swami Vivekanand Technical University (CSVTU)', 28.8, yStart, { width: 380 });
+doc.font('Helvetica-Bold').fontSize(7.5).fillColor('#000000').text('Jun 2017 – Jun 2021', 28.8, yStart, { align: 'right', width: contentWidth });
+yNext = doc.y;
+doc.font('Helvetica-Oblique').fontSize(7.5).fillColor('#444444').text('B.Tech, Electrical Engineering', 28.8, yNext, { width: 380 });
+doc.font('Helvetica-Oblique').fontSize(7.5).fillColor('#444444').text('Bhilai, India', 28.8, yNext, { align: 'right', width: contentWidth });
+
+doc.y += 1.5;
+
+// 6. Certifications
+sectionHeader('Certifications');
+doc.font('Helvetica')
+   .fontSize(7.5)
+   .fillColor('#111111');
+
+addBullet('Java Data Structures and Algorithms + LeetCode Exercises – Udemy');
+addBullet('Java and Spring Framework for Beginners with Spring Boot – Udemy');
 
 doc.end();
 
 stream.on('finish', () => {
-  // Copy to assets folder now that the file is fully written
   fs.copyFileSync(publicDestPath, assetsDestPath);
   console.log('Successfully wrote professional 1-page CV PDF to public/assets and assets folders!');
 });

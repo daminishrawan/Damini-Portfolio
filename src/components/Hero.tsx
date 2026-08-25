@@ -55,7 +55,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            Architecting Scalable Systems | Building for AI
+            Senior Frontend Engineer | AI Integration
           </motion.h2>
           <motion.p 
             className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed"
@@ -63,7 +63,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Full-Stack Developer based in Mumbai, currently leading end-to-end delivery of luxury hospitality ecosystems and internal automation at Isprava.
+            Full-Stack & Frontend Engineer with 2+ Years of Production Experience. Building high-scale UI architectures using React 18, TypeScript, Next.js, Node.js, and integrating practical Generative AI capabilities.
           </motion.p>
 
           <motion.div 
@@ -82,10 +82,11 @@ export default function Hero() {
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
             </a>
             <a 
-              href="#contact" 
+              href="/api/generate-cv" 
+              target="_blank"
               className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-white/10 transition-all hover:border-accent/50 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]"
             >
-              Get in Touch
+              Download CV
             </a>
           </motion.div>
 

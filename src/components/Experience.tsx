@@ -31,14 +31,6 @@ const experiences = [
 
 const education = [
   {
-    id: 0,
-    date: "16 Aug 2026 — Aug 2028 (Expected)",
-    institution: "Indian Institute of Technology, Jodhpur (IIT Jodhpur)",
-    degree: "Executive M.Tech in Artificial Intelligence",
-    gpa: "Upcoming",
-    description: "Specialized advanced program focusing on Machine Learning, Deep Learning, Artificial Intelligence, Optimization for Data Science, Advanced Data Structures & Algorithms, ML-Ops & DL-Ops, NLP, Computer Vision, and Advanced AI & Autonomous Systems."
-  },
-  {
     id: 1,
     date: "Mar 2023 — Aug 2023",
     institution: "C-DAC Pune",

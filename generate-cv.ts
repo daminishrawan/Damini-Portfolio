@@ -19,18 +19,12 @@ const doc = new PDFDocument({
   margins: { top: 28, bottom: 28, left: 36, right: 36 },
 });
 
-// Write to public folder
-const stream = fs.createWriteStream(publicDestPath);
-doc.pipe(stream);
+// Create write streams
+const publicStream = fs.createWriteStream(publicDestPath);
+const assetsStream = fs.createWriteStream(assetsDestPath);
 
-// Also pipe/write to assets folder as a copy
-const backupStream = fs.createWriteStream(assetsDestPath);
-doc.on('data', (chunk) => {
-  backupStream.write(chunk);
-});
-doc.on('end', () => {
-  backupStream.end();
-});
+doc.pipe(publicStream);
+doc.pipe(assetsStream);
 
 const contentWidth = 612 - 36 - 36; // 540
 const bulletIndent = 12;
@@ -44,13 +38,13 @@ function addBullet(bulletText: string) {
   doc.font('Helvetica')
      .fontSize(9.5)
      .lineGap(1.2)
-     .fillColor('black')
+     .fillColor('#000000')
      .text(bulletSymbol, 36 + 12, startY, { width: bulletIndent });
 
   // Render the bullet text adjacent to symbol
   doc.font('Times-Roman')
      .fontSize(9.5)
-     .fillColor('black')
+     .fillColor('#000000')
      .text(bulletText, 36 + 12 + bulletIndent, startY, {
     width: contentWidth - 12 - bulletIndent,
     align: 'justify',
@@ -65,13 +59,13 @@ function sectionHeader(title: string) {
   doc.y += 4;
   doc.font('Times-Bold')
      .fontSize(12)
-     .fillColor('black')
+     .fillColor('#000000')
      .text(title, 36, doc.y);
   
   const lineY = doc.y + 1;
   doc.moveTo(36, lineY)
      .lineTo(612 - 36, lineY)
-     .strokeColor('black')
+     .strokeColor('#000000')
      .lineWidth(0.5)
      .stroke();
   
@@ -81,14 +75,14 @@ function sectionHeader(title: string) {
 // Header
 doc.font('Times-Roman')
    .fontSize(24)
-   .fillColor('black')
+   .fillColor('#000000')
    .text('Damini Shrawan', { align: 'center' });
 
 doc.y += 2;
 
 doc.font('Times-Roman')
    .fontSize(9.5)
-   .fillColor('black')
+   .fillColor('#000000')
    .text('8959200891 | damini1998shrawan29@gmail.com | linkedin.com/in/daminishrawan |', { align: 'center' });
 doc.text('daminishrawan.github.io/DaminiPortfolio', { align: 'center' });
 
@@ -98,7 +92,7 @@ doc.y += 3;
 sectionHeader('Summary');
 doc.font('Times-Roman')
    .fontSize(9.5)
-   .fillColor('black')
+   .fillColor('#000000')
    .lineGap(1.2)
    .text(
      'Full-stack software engineer with 2.5+ years shipping production features across React 18, TypeScript, Next.js, Ruby on Rails, and PostgreSQL. Experienced building RESTful APIs, owning features end-to-end from requirements through deployment, and integrating third-party services in fast-moving product environments.',
@@ -119,10 +113,10 @@ const skillsData = [
 skillsData.forEach(skill => {
   doc.font('Times-Bold')
      .fontSize(9.5)
-     .fillColor('black')
+     .fillColor('#000000')
      .text(`${skill.label}: `, 36, doc.y, { continued: true })
      .font('Times-Roman')
-     .fillColor('black')
+     .fillColor('#000000')
      .text(skill.value, { width: contentWidth });
   doc.y += 2;
 });
@@ -132,11 +126,11 @@ sectionHeader('Experience');
 
 // Job 1
 let yStart = doc.y;
-doc.font('Times-Bold').fontSize(10.5).fillColor('black').text('Isprava / Lohono Stays', 36, yStart, { width: 300 });
-doc.font('Times-Roman').fontSize(10).fillColor('black').text('Mumbai, India', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Times-Bold').fontSize(10.5).fillColor('#000000').text('Isprava / Lohono Stays', 36, yStart, { width: 300 });
+doc.font('Times-Roman').fontSize(10).fillColor('#000000').text('Mumbai, India', 36, yStart, { align: 'right', width: contentWidth });
 let yNext = doc.y;
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('Software Developer', 36, yNext, { width: 300 });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('July 2024 – Present', 36, yNext, { align: 'right', width: contentWidth });
+doc.font('Times-Italic').fontSize(9.5).fillColor('#000000').text('Software Developer', 36, yNext, { width: 300 });
+doc.font('Times-Italic').fontSize(9.5).fillColor('#000000').text('July 2024 – Present', 36, yNext, { align: 'right', width: contentWidth });
 doc.y += 2;
 
 addBullet('Delivered full-stack features end-to-end across 6 production products, from requirements gathering through deployment, serving thousands of premium travellers.');
@@ -150,11 +144,11 @@ doc.y += 2;
 
 // Job 2
 yStart = doc.y;
-doc.font('Times-Bold').fontSize(10.5).fillColor('black').text('Isprava / Lohono Stays', 36, yStart, { width: 300 });
-doc.font('Times-Roman').fontSize(10).fillColor('black').text('Mumbai, India', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Times-Bold').fontSize(10.5).fillColor('#000000').text('Isprava / Lohono Stays', 36, yStart, { width: 300 });
+doc.font('Times-Roman').fontSize(10).fillColor('#000000').text('Mumbai, India', 36, yStart, { align: 'right', width: contentWidth });
 yNext = doc.y;
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('Frontend Developer', 36, yNext, { width: 300 });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('January 2024 – July 2024', 36, yNext, { align: 'right', width: contentWidth });
+doc.font('Times-Italic').fontSize(9.5).fillColor('#000000').text('Frontend Developer', 36, yNext, { width: 300 });
+doc.font('Times-Italic').fontSize(9.5).fillColor('#000000').text('January 2024 – July 2024', 36, yNext, { align: 'right', width: contentWidth });
 doc.y += 2;
 
 addBullet('Built core consumer-facing features for Lohono.com in React 18 and TypeScript, including checkout, dynamic pricing, and referral systems.');
@@ -166,9 +160,9 @@ sectionHeader('Projects');
 
 // Project 1
 yStart = doc.y;
-doc.font('Times-Bold').fontSize(9.5).fillColor('black').text('Lohono Trip Planner', 36, yStart, { continued: true });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text(' | React 18, TypeScript, Vite, Recoil, REST APIs');
-doc.font('Times-Roman').fontSize(9.5).fillColor('black').text('2024', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Times-Bold').fontSize(9.5).fillColor('#000000').text('Lohono Trip Planner', 36, yStart, { continued: true });
+doc.font('Times-Italic').fontSize(9.5).fillColor('#000000').text(' | React 18, TypeScript, Vite, Recoil, REST APIs');
+doc.font('Times-Roman').fontSize(9.5).fillColor('#000000').text('2024', 36, yStart, { align: 'right', width: contentWidth });
 doc.y += 1.5;
 addBullet('Designed and built a guest-facing trip-planning application from scratch, including meal-plan ordering, guest-count/time-slot state machines, and a document-upload web check-in flow.');
 addBullet('Built 11+ custom REST API hooks to power dynamic, real-time guest data across the application.');
@@ -177,9 +171,9 @@ doc.y += 1.5;
 
 // Project 2
 yStart = doc.y;
-doc.font('Times-Bold').fontSize(9.5).fillColor('black').text('Solene & Chapter Marketing Sites', 36, yStart, { continued: true });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text(' | Next.js, GitHub Actions, AWS S3/CloudFront');
-doc.font('Times-Roman').fontSize(9.5).fillColor('black').text('2024', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Times-Bold').fontSize(9.5).fillColor('#000000').text('Solene & Chapter Marketing Sites', 36, yStart, { continued: true });
+doc.font('Times-Italic').fontSize(9.5).fillColor('#000000').text(' | Next.js, GitHub Actions, AWS S3/CloudFront');
+doc.font('Times-Roman').fontSize(9.5).fillColor('#000000').text('2024', 36, yStart, { align: 'right', width: contentWidth });
 doc.y += 1.5;
 addBullet('Owned two marketing sites end-to-end, building multi-step validation forms and implementing SEO best practices; set up CI/CD pipelines via GitHub Actions for automated deployment.');
 
@@ -188,24 +182,31 @@ sectionHeader('Education');
 
 // Edu 1
 yStart = doc.y;
-doc.font('Times-Bold').fontSize(9.5).fillColor('black').text('Centre for Development of Advanced Computing (C-DAC)', 36, yStart, { width: 380 });
-doc.font('Times-Roman').fontSize(9.5).fillColor('black').text('India', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Times-Bold').fontSize(9.5).fillColor('#000000').text('Centre for Development of Advanced Computing (C-DAC)', 36, yStart, { width: 380 });
+doc.font('Times-Roman').fontSize(9.5).fillColor('#000000').text('India', 36, yStart, { align: 'right', width: contentWidth });
 yNext = doc.y;
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('PG-DMC, Mobile Computing', 36, yNext, { width: 380 });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('March 2023 – August 2023', 36, yNext, { align: 'right', width: contentWidth });
+doc.font('Times-Italic').fontSize(9.5).fillColor('#000000').text('PG-DMC, Mobile Computing', 36, yNext, { width: 380 });
+doc.font('Times-Italic').fontSize(9.5).fillColor('#000000').text('March 2023 – August 2023', 36, yNext, { align: 'right', width: contentWidth });
 
 doc.y += 3;
 
 // Edu 2
 yStart = doc.y;
-doc.font('Times-Bold').fontSize(9.5).fillColor('black').text('Chhattisgarh Swami Vivekanand Technical University', 36, yStart, { width: 380 });
-doc.font('Times-Roman').fontSize(9.5).fillColor('black').text('India', 36, yStart, { align: 'right', width: contentWidth });
+doc.font('Times-Bold').fontSize(9.5).fillColor('#000000').text('Chhattisgarh Swami Vivekanand Technical University', 36, yStart, { width: 380 });
+doc.font('Times-Roman').fontSize(9.5).fillColor('#000000').text('India', 36, yStart, { align: 'right', width: contentWidth });
 yNext = doc.y;
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('B.Tech, Electrical Engineering Technologies', 36, yNext, { width: 380 });
-doc.font('Times-Italic').fontSize(9.5).fillColor('black').text('June 2017 – June 2021', 36, yNext, { align: 'right', width: contentWidth });
+doc.font('Times-Italic').fontSize(9.5).fillColor('#000000').text('B.Tech, Electrical Engineering Technologies', 36, yNext, { width: 380 });
+doc.font('Times-Italic').fontSize(9.5).fillColor('#000000').text('June 2017 – June 2021', 36, yNext, { align: 'right', width: contentWidth });
 
 doc.end();
 
-stream.on('finish', () => {
-  console.log('Successfully wrote professional 1-page CV PDF to public/assets and assets folders!');
-});
+let finished = 0;
+const onFinish = () => {
+  finished++;
+  if (finished === 2) {
+    console.log('Successfully wrote professional 1-page CV PDF to public/assets and assets folders!');
+  }
+};
+
+publicStream.on('finish', onFinish);
+assetsStream.on('finish', onFinish);

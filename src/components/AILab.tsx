@@ -31,11 +31,18 @@ export default function AILab() {
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 blur-3xl rounded-full -mr-10 -mt-10 group-hover:bg-accent/20 transition-colors"></div>
             <Code2 className="w-10 h-10 text-accent mb-6" />
-            <h3 className="text-2xl font-semibold text-white mb-3">AI Portfolio Craft</h3>
+            <h3 className="text-2xl font-semibold text-white mb-3">Meet My AI Assistant</h3>
             <div className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-mono rounded-full mb-4">Featured Project</div>
-            <p className="text-gray-400">
-              Built and iterated this highly optimized, responsive portfolio using Gemini API for intelligent code generation, layout restructuring, and dynamic component architecture. Leveraged advanced prompt engineering to ensure clean, semantic Tailwind CSS and scalable React patterns.
+            <p className="text-gray-400 mb-6 leading-relaxed">
+              I built a custom RAG (Retrieval-Augmented Generation) pipeline to help you explore my background. Instead of reading a static resume, you can chat directly with this AI assistant. It's grounded in my actual project history, tech stack, and career milestones. Ask it about my work, and watch the 'RAG Inspector' panel to see exactly how it retrieves real data from my vector database to answer your questions!
             </p>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 text-xs font-mono bg-white/5 border border-white/10 text-accent rounded-full">Gemini 3.5 Flash</span>
+              <span className="px-3 py-1 text-xs font-mono bg-white/5 border border-white/10 text-accent rounded-full">ChromaDB</span>
+              <span className="px-3 py-1 text-xs font-mono bg-white/5 border border-white/10 text-accent rounded-full">LangChain</span>
+              <span className="px-3 py-1 text-xs font-mono bg-white/5 border border-white/10 text-accent rounded-full">FastAPI</span>
+              <span className="px-3 py-1 text-xs font-mono bg-white/5 border border-white/10 text-accent rounded-full">RAG Architecture</span>
+            </div>
           </motion.div>
 
           <motion.div

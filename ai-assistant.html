@@ -170,20 +170,21 @@
                     <svg class="w-10 h-10 mx-auto mb-3 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                     </svg>
-                    <p class="font-sans text-sm font-medium text-slate-400">Waiting for user query</p>
-                    <p class="font-sans text-xs mt-1 text-slate-500 max-w-xs mx-auto">Trigger a question to inspect embeddings, similarity scores, and retrieved portfolio chunks in real-time.</p>
+                    <p class="font-sans text-sm font-medium text-slate-400">Waiting for your question</p>
+                    <p class="font-sans text-xs mt-1 text-slate-500 max-w-xs mx-auto">Ask a question on the left to watch the RAG pipeline convert your query, search my resume vector database, and build the response in real-time.</p>
                 </div>
 
                 <!-- Pipeline Stages Container (populated dynamically) -->
                 <div id="pipelineContainer" class="space-y-4 hidden">
                     <!-- Step 1: User Query & Embedding -->
                     <div class="bg-slate-950 rounded-xl p-3.5 border border-slate-800">
-                        <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center justify-between mb-1">
                             <span class="text-indigo-400 font-semibold flex items-center gap-1.5">
                                 <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> 1. Query Embedding
                             </span>
                             <span class="text-[10px] text-slate-500 bg-slate-800/80 px-1.5 py-0.5 rounded">text-embedding-004</span>
                         </div>
+                        <p class="text-[11px] text-slate-400 font-sans mb-2">Converting your question into AI-readable format.</p>
                         <p id="debugQuery" class="text-slate-200 text-xs font-sans italic break-words mb-2"></p>
                         <div class="text-[10px] text-slate-400 bg-slate-900/90 p-2 rounded border border-slate-800/60 overflow-hidden font-mono">
                             <span class="text-slate-500">vector[768]: </span>
@@ -193,7 +194,7 @@
 
                     <!-- Step 2: Vector Search & Retrieved Chunks -->
                     <div class="bg-slate-950 rounded-xl p-3.5 border border-slate-800">
-                        <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center justify-between mb-1">
                             <span class="text-indigo-400 font-semibold flex items-center gap-1.5">
                                 <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> 2. ChromaDB Retrieval
                             </span>
@@ -201,6 +202,7 @@
                                 Top matches
                             </span>
                         </div>
+                        <p class="text-[11px] text-slate-400 font-sans mb-2">Searching my resume database for matching context.</p>
                         <div id="debugChunks" class="space-y-2.5 mt-2">
                             <!-- Chunks inserted here -->
                         </div>
@@ -208,12 +210,13 @@
 
                     <!-- Step 3: Prompt Construction -->
                     <div class="bg-slate-950 rounded-xl p-3.5 border border-slate-800">
-                        <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center justify-between mb-1">
                             <span class="text-indigo-400 font-semibold flex items-center gap-1.5">
                                 <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> 3. LLM Augmented Prompt
                             </span>
                             <span class="text-[10px] text-slate-500 bg-slate-800/80 px-1.5 py-0.5 rounded">Context Injected</span>
                         </div>
+                        <p class="text-[11px] text-slate-400 font-sans mb-2">Combining your question with my data to generate a factual answer.</p>
                         <div id="debugPrompt" class="text-[11px] text-slate-400 bg-slate-900/90 p-2.5 rounded border border-slate-800/60 font-sans max-h-40 overflow-y-auto leading-relaxed">
                         </div>
                     </div>
@@ -221,7 +224,7 @@
                     <!-- Step 4: Generation Stats -->
                     <div class="bg-slate-950 rounded-xl p-3 border border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
                         <div>
-                            <span class="text-slate-500">Model:</span> <span class="text-slate-200">Gemini 1.5 Flash</span>
+                            <span class="text-slate-500">Model:</span> <span class="text-slate-200">Gemini 3.5 Flash</span>
                         </div>
                         <div>
                             <span class="text-slate-500">Latency:</span> <span id="debugLatency" class="text-emerald-400">~240ms</span>

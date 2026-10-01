@@ -82,8 +82,9 @@ export default function Hero() {
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
             </a>
             <a 
-              href="/api/generate-cv" 
+              href="https://drive.google.com/file/d/19pj_G7YLykD1hVGBqZjUtI8bNQZwOmM8/view?usp=sharing" 
               target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-white/10 transition-all hover:border-accent/50 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]"
             >
               Download CV

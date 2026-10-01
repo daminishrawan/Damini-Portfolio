@@ -1,4 +1,33 @@
+// =========================================================================
+// Global Configuration
+// Easily update your external CV Google Drive link here:
+// =========================================================================
+const CV_DRIVE_LINK = "https://drive.google.com/file/d/19pj_G7YLykD1hVGBqZjUtI8bNQZwOmM8/view?usp=sharing";
+
 document.addEventListener("DOMContentLoaded", () => {
+  // =========================================================================
+  // Dynamic CV Download Logic
+  // Binds all CV download buttons/anchors to CV_DRIVE_LINK and opens in new tab
+  // =========================================================================
+  const cvButtons = document.querySelectorAll(".cv-download-btn, #download-cv-btn, [data-cv-download]");
+  cvButtons.forEach((btn) => {
+    // Keep href in sync for browser accessibility (right-click, copy link, middle-click)
+    if (btn.tagName === "A") {
+      btn.href = CV_DRIVE_LINK;
+      btn.target = "_blank";
+      btn.rel = "noopener noreferrer";
+    }
+
+    // Clean click listener to open the Drive link in a new tab
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.open(CV_DRIVE_LINK, "_blank", "noopener,noreferrer");
+    });
+  });
+
+  // =========================================================================
+  // Floating Portfolio AI Chatbot Widget Logic
+  // =========================================================================
   const chatToggleBtn = document.getElementById("chatToggleBtn");
   const chatWindow = document.getElementById("chatWindow");
   const closeChatBtn = document.getElementById("closeChat");
